@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OwnMessageCell" rowHeight="134" id="rzd-oc-C2G" customClass="OwnMessageCell" customModule="ChatAppMuzmatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="479" height="134"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rzd-oc-C2G" id="usG-DX-HFR">
+                <rect key="frame" x="0.0" y="0.0" width="479" height="134"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9QG-mP-CwI">
+                        <rect key="frame" x="312" y="5" width="167" height="124"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey!, How are you?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvC-pn-OyL">
+                                <rect key="frame" x="10" y="10" width="147" height="104"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <constraints>
+                            <constraint firstItem="zvC-pn-OyL" firstAttribute="leading" secondItem="9QG-mP-CwI" secondAttribute="leading" constant="10" id="VHh-qv-553"/>
+                            <constraint firstItem="zvC-pn-OyL" firstAttribute="top" secondItem="9QG-mP-CwI" secondAttribute="top" constant="10" id="acJ-1o-SwY"/>
+                            <constraint firstAttribute="trailing" secondItem="zvC-pn-OyL" secondAttribute="trailing" constant="10" id="ns6-uH-o5J"/>
+                            <constraint firstAttribute="bottom" secondItem="zvC-pn-OyL" secondAttribute="bottom" constant="10" id="wts-SC-QXm"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="9QG-mP-CwI" secondAttribute="bottom" constant="5" id="8fB-c8-vPP"/>
+                    <constraint firstItem="9QG-mP-CwI" firstAttribute="top" secondItem="usG-DX-HFR" secondAttribute="top" constant="5" id="LWb-bg-YVo"/>
+                    <constraint firstAttribute="trailing" secondItem="9QG-mP-CwI" secondAttribute="trailing" id="VBn-pv-Adk"/>
+                    <constraint firstItem="9QG-mP-CwI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="usG-DX-HFR" secondAttribute="leading" id="bKK-Vh-MW6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="bubbleView" destination="9QG-mP-CwI" id="dHG-uV-2PT"/>
+                <outlet property="messageLabel" destination="zvC-pn-OyL" id="z15-BD-hrC"/>
+            </connections>
+            <point key="canvasLocation" x="184.78260869565219" y="178.79464285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

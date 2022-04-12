@@ -9,14 +9,22 @@
 /* Begin PBXBuildFile section */
 		9F37AA8C280569BF00688F3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AA8B280569BF00688F3A /* AppDelegate.swift */; };
 		9F37AA8E280569BF00688F3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AA8D280569BF00688F3A /* SceneDelegate.swift */; };
-		9F37AA90280569BF00688F3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AA8F280569BF00688F3A /* ViewController.swift */; };
-		9F37AA93280569BF00688F3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F37AA91280569BF00688F3A /* Main.storyboard */; };
+		9F37AA90280569BF00688F3A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AA8F280569BF00688F3A /* ChatViewController.swift */; };
+		9F37AA93280569BF00688F3A /* ChatViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F37AA91280569BF00688F3A /* ChatViewController.storyboard */; };
 		9F37AA96280569BF00688F3A /* ChatAppMuzmatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AA94280569BF00688F3A /* ChatAppMuzmatch.xcdatamodeld */; };
 		9F37AA98280569C100688F3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F37AA97280569C100688F3A /* Assets.xcassets */; };
 		9F37AA9B280569C100688F3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F37AA99280569C100688F3A /* LaunchScreen.storyboard */; };
 		9F37AAA6280569C100688F3A /* ChatAppMuzmatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AAA5280569C100688F3A /* ChatAppMuzmatchTests.swift */; };
 		9F37AAB0280569C100688F3A /* ChatAppMuzmatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AAAF280569C100688F3A /* ChatAppMuzmatchUITests.swift */; };
 		9F37AAB2280569C100688F3A /* ChatAppMuzmatchUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AAB1280569C100688F3A /* ChatAppMuzmatchUITestsLaunchTests.swift */; };
+		9F37AABF2805734B00688F3A /* OwnMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F37AABE2805734B00688F3A /* OwnMessageCell.xib */; };
+		9F37AAC12805735800688F3A /* OwnMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AAC02805735800688F3A /* OwnMessageCell.swift */; };
+		9F37AAC42805B0FD00688F3A /* InputBarAccessoryView in Frameworks */ = {isa = PBXBuildFile; productRef = 9F37AAC32805B0FD00688F3A /* InputBarAccessoryView */; };
+		9F9DAAE02805EC9C00C7C20B /* ForeignMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAADE2805EC9C00C7C20B /* ForeignMessageCell.swift */; };
+		9F9DAAE12805EC9C00C7C20B /* ForeignMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F9DAADF2805EC9C00C7C20B /* ForeignMessageCell.xib */; };
+		9F9DAAE32805F25500C7C20B /* CustomInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAAE22805F25500C7C20B /* CustomInputBar.swift */; };
+		9F9DAAE52805F29200C7C20B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAAE42805F29200C7C20B /* UITableView+Extension.swift */; };
+		9F9DAAED2805F61E00C7C20B /* StoryboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAAEC2805F61E00C7C20B /* StoryboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +48,8 @@
 		9F37AA88280569BF00688F3A /* ChatAppMuzmatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatAppMuzmatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F37AA8B280569BF00688F3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F37AA8D280569BF00688F3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9F37AA8F280569BF00688F3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9F37AA92280569BF00688F3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9F37AA8F280569BF00688F3A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		9F37AA92280569BF00688F3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChatViewController.storyboard; sourceTree = "<group>"; };
 		9F37AA95280569BF00688F3A /* ChatAppMuzmatch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChatAppMuzmatch.xcdatamodel; sourceTree = "<group>"; };
 		9F37AA97280569C100688F3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F37AA9A280569C100688F3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +59,13 @@
 		9F37AAAB280569C100688F3A /* ChatAppMuzmatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatAppMuzmatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F37AAAF280569C100688F3A /* ChatAppMuzmatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppMuzmatchUITests.swift; sourceTree = "<group>"; };
 		9F37AAB1280569C100688F3A /* ChatAppMuzmatchUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppMuzmatchUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9F37AABE2805734B00688F3A /* OwnMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OwnMessageCell.xib; sourceTree = "<group>"; };
+		9F37AAC02805735800688F3A /* OwnMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnMessageCell.swift; sourceTree = "<group>"; };
+		9F9DAADE2805EC9C00C7C20B /* ForeignMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignMessageCell.swift; sourceTree = "<group>"; };
+		9F9DAADF2805EC9C00C7C20B /* ForeignMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForeignMessageCell.xib; sourceTree = "<group>"; };
+		9F9DAAE22805F25500C7C20B /* CustomInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputBar.swift; sourceTree = "<group>"; };
+		9F9DAAE42805F29200C7C20B /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		9F9DAAEC2805F61E00C7C20B /* StoryboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F37AAC42805B0FD00688F3A /* InputBarAccessoryView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,14 +117,9 @@
 		9F37AA8A280569BF00688F3A /* ChatAppMuzmatch */ = {
 			isa = PBXGroup;
 			children = (
-				9F37AA8B280569BF00688F3A /* AppDelegate.swift */,
-				9F37AA8D280569BF00688F3A /* SceneDelegate.swift */,
-				9F37AA8F280569BF00688F3A /* ViewController.swift */,
-				9F37AA91280569BF00688F3A /* Main.storyboard */,
-				9F37AA97280569C100688F3A /* Assets.xcassets */,
-				9F37AA99280569C100688F3A /* LaunchScreen.storyboard */,
-				9F37AA9C280569C100688F3A /* Info.plist */,
-				9F37AA94280569BF00688F3A /* ChatAppMuzmatch.xcdatamodeld */,
+				9F9DAAEE2805F67F00C7C20B /* Views */,
+				9F9DAAE92805F51800C7C20B /* Helpers */,
+				9F9DAAE82805F50A00C7C20B /* Project Files */,
 			);
 			path = ChatAppMuzmatch;
 			sourceTree = "<group>";
@@ -130,6 +141,74 @@
 			path = ChatAppMuzmatchUITests;
 			sourceTree = "<group>";
 		};
+		9F9DAAE62805F4E400C7C20B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9F37AABE2805734B00688F3A /* OwnMessageCell.xib */,
+				9F37AAC02805735800688F3A /* OwnMessageCell.swift */,
+				9F9DAADF2805EC9C00C7C20B /* ForeignMessageCell.xib */,
+				9F9DAADE2805EC9C00C7C20B /* ForeignMessageCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9F9DAAE72805F4EA00C7C20B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9F37AA8F280569BF00688F3A /* ChatViewController.swift */,
+				9F37AA91280569BF00688F3A /* ChatViewController.storyboard */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9F9DAAE82805F50A00C7C20B /* Project Files */ = {
+			isa = PBXGroup;
+			children = (
+				9F37AA8B280569BF00688F3A /* AppDelegate.swift */,
+				9F37AA8D280569BF00688F3A /* SceneDelegate.swift */,
+				9F37AA97280569C100688F3A /* Assets.xcassets */,
+				9F37AA99280569C100688F3A /* LaunchScreen.storyboard */,
+				9F37AA9C280569C100688F3A /* Info.plist */,
+				9F37AA94280569BF00688F3A /* ChatAppMuzmatch.xcdatamodeld */,
+			);
+			path = "Project Files";
+			sourceTree = "<group>";
+		};
+		9F9DAAE92805F51800C7C20B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAAEB2805F60E00C7C20B /* Protocols */,
+				9F9DAAEA2805F52300C7C20B /* Extensions */,
+				9F9DAAE22805F25500C7C20B /* CustomInputBar.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9F9DAAEA2805F52300C7C20B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAAE42805F29200C7C20B /* UITableView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9F9DAAEB2805F60E00C7C20B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAAEC2805F61E00C7C20B /* StoryboardViewController.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		9F9DAAEE2805F67F00C7C20B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAAE72805F4EA00C7C20B /* ViewControllers */,
+				9F9DAAE62805F4E400C7C20B /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +225,9 @@
 			dependencies = (
 			);
 			name = ChatAppMuzmatch;
+			packageProductDependencies = (
+				9F37AAC32805B0FD00688F3A /* InputBarAccessoryView */,
+			);
 			productName = ChatAppMuzmatch;
 			productReference = 9F37AA88280569BF00688F3A /* ChatAppMuzmatch.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +300,9 @@
 				Base,
 			);
 			mainGroup = 9F37AA7F280569BE00688F3A;
+			packageReferences = (
+				9F37AAC22805B0FD00688F3A /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
+			);
 			productRefGroup = 9F37AA89280569BF00688F3A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -234,9 +319,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F9DAAE12805EC9C00C7C20B /* ForeignMessageCell.xib in Resources */,
 				9F37AA9B280569C100688F3A /* LaunchScreen.storyboard in Resources */,
+				9F37AABF2805734B00688F3A /* OwnMessageCell.xib in Resources */,
 				9F37AA98280569C100688F3A /* Assets.xcassets in Resources */,
-				9F37AA93280569BF00688F3A /* Main.storyboard in Resources */,
+				9F37AA93280569BF00688F3A /* ChatViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,10 +348,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F37AA90280569BF00688F3A /* ViewController.swift in Sources */,
+				9F37AA90280569BF00688F3A /* ChatViewController.swift in Sources */,
+				9F37AAC12805735800688F3A /* OwnMessageCell.swift in Sources */,
+				9F9DAAE32805F25500C7C20B /* CustomInputBar.swift in Sources */,
 				9F37AA8C280569BF00688F3A /* AppDelegate.swift in Sources */,
 				9F37AA96280569BF00688F3A /* ChatAppMuzmatch.xcdatamodeld in Sources */,
+				9F9DAAE02805EC9C00C7C20B /* ForeignMessageCell.swift in Sources */,
 				9F37AA8E280569BF00688F3A /* SceneDelegate.swift in Sources */,
+				9F9DAAED2805F61E00C7C20B /* StoryboardViewController.swift in Sources */,
+				9F9DAAE52805F29200C7C20B /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,12 +393,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9F37AA91280569BF00688F3A /* Main.storyboard */ = {
+		9F37AA91280569BF00688F3A /* ChatViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9F37AA92280569BF00688F3A /* Base */,
 			);
-			name = Main.storyboard;
+			name = ChatViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		9F37AA99280569C100688F3A /* LaunchScreen.storyboard */ = {
@@ -445,10 +537,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8CEQW7LX82;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ChatAppMuzmatch/Info.plist;
+				INFOPLIST_FILE = "ChatAppMuzmatch/Project Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -473,10 +564,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8CEQW7LX82;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ChatAppMuzmatch/Info.plist;
+				INFOPLIST_FILE = "ChatAppMuzmatch/Project Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -608,6 +698,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9F37AAC22805B0FD00688F3A /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nathantannar4/InputBarAccessoryView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9F37AAC32805B0FD00688F3A /* InputBarAccessoryView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F37AAC22805B0FD00688F3A /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */;
+			productName = InputBarAccessoryView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9F37AA94280569BF00688F3A /* ChatAppMuzmatch.xcdatamodeld */ = {
