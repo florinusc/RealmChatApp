@@ -44,4 +44,48 @@ final class CustomInputBar: InputBarAccessoryView {
         isTranslucent = true
     }
     
+    func addView(yDistance: CGFloat, _ completion: @escaping () -> Void) {
+        let frame = convert(inputTextView.frame, from: contentView)
+        let animatingView = UIView(frame: frame)
+        animatingView.backgroundColor = .systemPink
+        animatingView.layer.cornerRadius = 16.0
+        animatingView.alpha = 0.2
+        
+        let textLabel = UILabel(frame: CGRect(x: 20, y: 7, width: frame.width - 44.0, height: frame.height - 16))
+        textLabel.text = inputTextView.text
+        textLabel.font = inputTextView.font
+        textLabel.numberOfLines = 0
+        
+        animatingView.addSubview(textLabel)
+        
+        addSubview(animatingView)
+        
+        textLabel.sizeToFit()
+        
+        UIView.animate(withDuration: 1, delay: 0) {
+            textLabel.frame = CGRect(x: 10, y: 7, width: textLabel.frame.width, height: textLabel.frame.height)
+            let newFrame = CGRect(x: self.frame.width - textLabel.frame.width - 40,
+                                  y: animatingView.frame.minY - yDistance,
+                                  width: textLabel.frame.width + 30,
+                                  height: animatingView.frame.height )
+            animatingView.frame = newFrame
+            animatingView.alpha = 0.9
+            textLabel.textColor = .white
+        } completion: { _ in
+            animatingView.removeFromSuperview()
+            completion()
+        }
+
+    }
+    
+}
+
+extension UIView{
+    var globalPoint :CGPoint? {
+        return self.superview?.convert(self.frame.origin, to: nil)
+    }
+
+    var globalFrame :CGRect? {
+        return self.superview?.convert(self.frame, to: nil)
+    }
 }

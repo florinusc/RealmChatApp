@@ -9,6 +9,13 @@ import UIKit
 import Combine
 import InputBarAccessoryView
 
+enum MessageSection {
+    case main
+}
+
+typealias DataSource = UITableViewDiffableDataSource<MessageSection, Message>
+typealias Snapshot = NSDiffableDataSourceSnapshot<MessageSection, Message>
+
 class ChatViewController: UIViewController {
     
     private enum Animation {
@@ -20,6 +27,8 @@ class ChatViewController: UIViewController {
     @IBOutlet private weak var tableViewBottomConstraint: NSLayoutConstraint!
 
     private let inputBar = CustomInputBar()
+    
+    private let viewModel = ChatViewModel()
     
     override var inputAccessoryView: UIView? {
         return inputBar
@@ -41,17 +50,17 @@ class ChatViewController: UIViewController {
     private func setUp() {
         setUpTableView()
         setUpNotification()
+        viewModel.dataSource = createDataSource()
         inputBar.delegate = self
     }
     
     private func setUpTableView() {
         tableView.delegate = self
-        tableView.dataSource = self
         
-        tableView.registerCell(OwnMessageCell.self)
-        tableView.registerCell(ForeignMessageCell.self)
+        tableView.registerCell(OutgoingMessageCell.self)
+        tableView.registerCell(IncomingMessageCell.self)
         
-        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
+//        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
         
         tableView.keyboardDismissMode = .interactive
         
@@ -60,6 +69,25 @@ class ChatViewController: UIViewController {
         
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.automaticallyAdjustsScrollIndicatorInsets = false
+    }
+    
+    private func createDataSource() -> DataSource {
+        let dataSource = DataSource(tableView: tableView) { [weak self] (tableView, indexPath, itemIdentifier) -> UITableViewCell? in
+            guard let self = self else { return nil }
+            let message = self.viewModel.messages[indexPath.row]
+            
+            if message.sender.name != "Me" {
+                let incomingMessageCell: IncomingMessageCell = tableView.dequeueCell(for: indexPath)
+                incomingMessageCell.message = message.content
+                return incomingMessageCell
+            }
+            
+            let outgoingMessageCell: OutgoingMessageCell = tableView.dequeueCell(for: indexPath)
+            outgoingMessageCell.message = message.content
+            
+            return outgoingMessageCell
+        }
+        return dataSource
     }
 
     private func setUpNotification() {
@@ -83,40 +111,19 @@ class ChatViewController: UIViewController {
         UIView.animate(withDuration: duration) {
             switch animation {
             case .keyboardWillShow:
-                self.tableView.contentInset.top = keyboardFrame.height
+                self.tableViewBottomConstraint.constant = keyboardFrame.height
             case .keyboardWillHide:
-                self.tableView.contentInset.top = 15
+                self.tableViewBottomConstraint.constant = 15
             }
             self.view.layoutIfNeeded()
         }
-        
     }
     
 }
 
-extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let ownCell = tableView.dequeueReusableCell(withIdentifier: "OwnMessageCell", for: indexPath) as! OwnMessageCell
-        ownCell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
-        ownCell.message = "Hey, this is a test"
-        
-        let foreignCell = tableView.dequeueReusableCell(withIdentifier: "ForeignMessageCell", for: indexPath) as! ForeignMessageCell
-        foreignCell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
-        foreignCell.message = "Hey, this is a test"
-        
-        if indexPath.row % 2 == 0 {
-            return foreignCell
-        }
-        
-        return ownCell
-    }
-    
+extension ChatViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        return 40
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -131,35 +138,28 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
 extension ChatViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        guard let customInputBar = inputBar as? CustomInputBar else { return }
         
-        // Here we can parse for which substrings were autocompleted
-        let attributedText = inputBar.inputTextView.attributedText!
-        let range = NSRange(location: 0, length: attributedText.length)
-        attributedText.enumerateAttribute(.autocompleted, in: range, options: []) { (attributes, range, stop) in
+        let distanceFromLastCellToBottom = self.tableView.frame.height - (self.tableView.visibleCells.last?.globalPoint?.y ?? 0)
+        
+        if distanceFromLastCellToBottom < 100 {
+            self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        }
+        
+        self.tableView.scrollToRow(at: IndexPath(row: self.viewModel.messages.count - 1, section: 0), at: .top, animated: true)
+        
+        let yDistance = distanceFromLastCellToBottom < 50 ? distanceFromLastCellToBottom + 50 : distanceFromLastCellToBottom
+        
+        customInputBar.addView(yDistance: yDistance) {}
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+            self.viewModel.addMessage(inputBar.inputTextView.text)
             
-            let substring = attributedText.attributedSubstring(from: range)
-            let context = substring.attribute(.autocompletedContext, at: 0, effectiveRange: nil)
-            print("Autocompleted: `", substring, "` with context: ", context ?? [])
+            self.tableView.contentInset = .zero
+            self.tableView.scrollToRow(at: IndexPath(row: self.viewModel.messages.count - 1, section: 0), at: .bottom, animated: true)
+            inputBar.inputTextView.text = String()
         }
-
-        inputBar.inputTextView.text = String()
-        inputBar.invalidatePlugins()
-
-        // Send button activity animation
-        inputBar.sendButton.startAnimating()
-        inputBar.inputTextView.placeholder = "Sending..."
-        DispatchQueue.global(qos: .default).async {
-            // fake send request task
-            sleep(1)
-            DispatchQueue.main.async { [weak self] in
-                inputBar.sendButton.stopAnimating()
-                inputBar.inputTextView.placeholder = "Aa"
-//                self?.conversation.messages.append(SampleData.Message(user: SampleData.shared.currentUser, text: text))
-//                let indexPath = IndexPath(row: (self?.conversation.messages.count ?? 1) - 1, section: 0)
-//                self?.tableView.insertRows(at: [indexPath], with: .automatic)
-//                self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-            }
-        }
+        
     }
     
 }

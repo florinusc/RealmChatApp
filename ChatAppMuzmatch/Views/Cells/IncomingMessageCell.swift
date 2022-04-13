@@ -1,5 +1,5 @@
 //
-//  ForeignMessageCell.swift
+//  IncomingMessageCell.swift
 //  ChatAppMuzmatch
 //
 //  Created by Florin Uscatu on 12.04.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ForeignMessageCell: UITableViewCell {
+class IncomingMessageCell: UITableViewCell {
     
     @IBOutlet private weak var bubbleView: UIView!
     @IBOutlet private weak var messageLabel: UILabel!
@@ -20,7 +20,8 @@ class ForeignMessageCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        bubbleView.layer.cornerRadius = 8.0
+        bubbleView.layer.cornerRadius = 16.0
+//        contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
     }
     
     
