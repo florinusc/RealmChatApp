@@ -21,7 +21,7 @@ class OutgoingMessageCell: UITableViewCell {
     
     var isCompact: Bool = false {
         didSet {
-            bubbleViewTopConstraint.constant = isCompact ? 1 : 5
+            bubbleViewTopConstraint.constant = isCompact ? Constants.cellCompactTopConstraint : Constants.cellRegularTopConstraint
         }
     }
     
@@ -31,7 +31,7 @@ class OutgoingMessageCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        bubbleView.layer.cornerRadius = 16.0
+        bubbleView.layer.cornerRadius = Constants.bubbleCornerRadius
     }
     
 }

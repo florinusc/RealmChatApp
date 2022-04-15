@@ -48,7 +48,7 @@ final class CustomInputBar: InputBarAccessoryView {
         let frame = convert(inputTextView.frame, from: contentView)
         let animatingView = UIView(frame: frame)
         animatingView.backgroundColor = .systemPink
-        animatingView.layer.cornerRadius = 16.0
+        animatingView.layer.cornerRadius = Constants.bubbleCornerRadius
         animatingView.alpha = 0.2
         
         let textLabel = UILabel(frame: CGRect(x: 20, y: 7, width: frame.width - 44.0, height: frame.height - 16))

@@ -30,6 +30,7 @@
 		9F9DAAF52805F8E400C7C20B /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAAF42805F8E400C7C20B /* ChatViewModel.swift */; };
 		9FA5C0E92808728E00502D99 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0E82808728E00502D99 /* UIView+Extension.swift */; };
 		9FA5C0EB28094B5D00502D99 /* MessageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0EA28094B5D00502D99 /* MessageSection.swift */; };
+		9FA5C0EF2809A6B200502D99 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0EE2809A6B200502D99 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		9F9DAAF42805F8E400C7C20B /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		9FA5C0E82808728E00502D99 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9FA5C0EA28094B5D00502D99 /* MessageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSection.swift; sourceTree = "<group>"; };
+		9FA5C0EE2809A6B200502D99 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				9F9DAAEB2805F60E00C7C20B /* Protocols */,
 				9F9DAAEA2805F52300C7C20B /* Extensions */,
 				9F9DAAE22805F25500C7C20B /* CustomInputBar.swift */,
+				9FA5C0EE2809A6B200502D99 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				9F37AAC12805735800688F3A /* OutgoingMessageCell.swift in Sources */,
 				9F9DAAE32805F25500C7C20B /* CustomInputBar.swift in Sources */,
 				9F37AA8C280569BF00688F3A /* AppDelegate.swift in Sources */,
+				9FA5C0EF2809A6B200502D99 /* Constants.swift in Sources */,
 				9F37AA96280569BF00688F3A /* ChatAppMuzmatch.xcdatamodeld in Sources */,
 				9F9DAAE02805EC9C00C7C20B /* IncomingMessageCell.swift in Sources */,
 				9F37AA8E280569BF00688F3A /* SceneDelegate.swift in Sources */,
@@ -568,6 +572,7 @@
 				INFOPLIST_FILE = "ChatAppMuzmatch/Project Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -579,7 +584,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -595,6 +600,7 @@
 				INFOPLIST_FILE = "ChatAppMuzmatch/Project Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -606,7 +612,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

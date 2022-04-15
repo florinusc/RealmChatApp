@@ -172,7 +172,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                     return
                 }
                 let lastCellGlobalPoint = lastCell.originOnWindow
-                let topPadding: CGFloat = self.viewModel.isCompactMessage(at: lastIndexPath) ? 1 : 5
+                let topPadding: CGFloat = self.viewModel.isCompactMessage(at: lastIndexPath) ? Constants.cellCompactTopConstraint : Constants.cellRegularTopConstraint
                 customInputBar.addView(center: lastCellGlobalPoint, width: lastCell.bubbleWidth, topPadding: topPadding) {
                     lastCell.isHidden = false
                     self.isAnimating = false
