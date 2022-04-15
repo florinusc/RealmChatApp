@@ -18,10 +18,13 @@ class OutgoingMessageCell: UITableViewCell {
         }
     }
     
+    var bubbleWidth: CGFloat {
+        return bubbleView.frame.width
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         bubbleView.layer.cornerRadius = 16.0
-//        contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
     }
     
 }

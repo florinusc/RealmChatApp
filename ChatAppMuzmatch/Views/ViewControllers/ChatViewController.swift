@@ -30,6 +30,8 @@ class ChatViewController: UIViewController {
     
     private let viewModel = ChatViewModel()
     
+    private var isAnimating = false
+    
     override var inputAccessoryView: UIView? {
         return inputBar
     }
@@ -60,8 +62,6 @@ class ChatViewController: UIViewController {
         tableView.registerCell(OutgoingMessageCell.self)
         tableView.registerCell(IncomingMessageCell.self)
         
-//        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
-        
         tableView.keyboardDismissMode = .interactive
         
         tableView.estimatedSectionHeaderHeight = .leastNonzeroMagnitude
@@ -84,6 +84,12 @@ class ChatViewController: UIViewController {
             
             let outgoingMessageCell: OutgoingMessageCell = tableView.dequeueCell(for: indexPath)
             outgoingMessageCell.message = message.content
+            
+            if indexPath.row == (self.viewModel.messages.count - 1) && self.isAnimating {
+                outgoingMessageCell.isHidden = true
+            } else {
+                outgoingMessageCell.isHidden = false
+            }
             
             return outgoingMessageCell
         }
@@ -138,28 +144,24 @@ extension ChatViewController: UITableViewDelegate {
 extension ChatViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
-        guard let customInputBar = inputBar as? CustomInputBar else { return }
-        
-        let distanceFromLastCellToBottom = self.tableView.frame.height - (self.tableView.visibleCells.last?.globalPoint?.y ?? 0)
-        
-        if distanceFromLastCellToBottom < 100 {
-            self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        isAnimating = true
+        self.viewModel.addMessage(inputBar.inputTextView.text) {
+            UIView.animate(withDuration: 0.15) {
+                self.tableView.scrollToRow(at: IndexPath(row: self.viewModel.messages.count - 1, section: 0), at: .bottom, animated: false)
+            } completion: { _ in
+                guard
+                    let customInputBar = inputBar as? CustomInputBar,
+                    let lastCell = self.tableView.cellForRow(at: IndexPath(row: self.viewModel.messages.count - 1, section: 0)) as? OutgoingMessageCell
+                else {
+                    return
+                }
+                let lastCellGlobalPoint = lastCell.originOnWindow
+                customInputBar.addView(center: lastCellGlobalPoint, width: lastCell.bubbleWidth) {
+                    lastCell.isHidden = false
+                    self.isAnimating = false
+                }
+            }
         }
-        
-        self.tableView.scrollToRow(at: IndexPath(row: self.viewModel.messages.count - 1, section: 0), at: .top, animated: true)
-        
-        let yDistance = distanceFromLastCellToBottom < 50 ? distanceFromLastCellToBottom + 50 : distanceFromLastCellToBottom
-        
-        customInputBar.addView(yDistance: yDistance) {}
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
-            self.viewModel.addMessage(inputBar.inputTextView.text)
-            
-            self.tableView.contentInset = .zero
-            self.tableView.scrollToRow(at: IndexPath(row: self.viewModel.messages.count - 1, section: 0), at: .bottom, animated: true)
-            inputBar.inputTextView.text = String()
-        }
-        
     }
     
 }

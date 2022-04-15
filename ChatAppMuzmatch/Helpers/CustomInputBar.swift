@@ -44,7 +44,7 @@ final class CustomInputBar: InputBarAccessoryView {
         isTranslucent = true
     }
     
-    func addView(yDistance: CGFloat, _ completion: @escaping () -> Void) {
+    func addView(center: CGPoint, width: CGFloat, _ completion: @escaping () -> Void) {
         let frame = convert(inputTextView.frame, from: contentView)
         let animatingView = UIView(frame: frame)
         animatingView.backgroundColor = .systemPink
@@ -62,30 +62,22 @@ final class CustomInputBar: InputBarAccessoryView {
         
         textLabel.sizeToFit()
         
-        UIView.animate(withDuration: 1, delay: 0) {
-            textLabel.frame = CGRect(x: 10, y: 7, width: textLabel.frame.width, height: textLabel.frame.height)
-            let newFrame = CGRect(x: self.frame.width - textLabel.frame.width - 40,
-                                  y: animatingView.frame.minY - yDistance,
-                                  width: textLabel.frame.width + 30,
-                                  height: animatingView.frame.height )
+        UIView.animate(withDuration: 0.35, delay: 0) {
+            textLabel.frame = CGRect(x: 10, y: 10, width: width, height: textLabel.frame.height)
+            let newY = animatingView.frame.minY - ((animatingView.originOnWindow.y) - center.y) + 5
+            let newFrame = CGRect(x: self.frame.width - width - 10,
+                                  y: newY,
+                                  width: width,
+                                  height: textLabel.frame.height + 20 )
             animatingView.frame = newFrame
+            
             animatingView.alpha = 0.9
             textLabel.textColor = .white
+            self.inputTextView.text = String()
         } completion: { _ in
             animatingView.removeFromSuperview()
             completion()
         }
-
     }
     
-}
-
-extension UIView{
-    var globalPoint :CGPoint? {
-        return self.superview?.convert(self.frame.origin, to: nil)
-    }
-
-    var globalFrame :CGRect? {
-        return self.superview?.convert(self.frame, to: nil)
-    }
 }

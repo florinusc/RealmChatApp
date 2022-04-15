@@ -17,7 +17,7 @@ class ChatViewModel {
             snapshot.appendSections([.main])
             snapshot.appendItems(messages)
             dataSource.apply(snapshot, animatingDifferences: false)
-            dataSource.defaultRowAnimation = .bottom
+            dataSource.defaultRowAnimation = .none
         }
     }
     var snapshot = Snapshot()
@@ -44,12 +44,12 @@ class ChatViewModel {
         ].sorted(by: { $0.timeStamp < $1.timeStamp })
     }
     
-    func addMessage(_ messageContent: String) {
+    func addMessage(_ messageContent: String, _ completion: (() -> Void)? = nil) {
         let ownUser = User(id: UUID().uuidString, name: "Me")
         let message = Message(id: UUID().uuidString, sender: ownUser, content: messageContent, timeStamp: Date())
         snapshot.insertItems([message], afterItem: messages.last!)
         messages.append(message)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: true, completion: completion)
     }
     
 }
