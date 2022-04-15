@@ -10,6 +10,7 @@ import UIKit
 class IncomingMessageCell: UITableViewCell {
     
     @IBOutlet private weak var bubbleView: UIView!
+    @IBOutlet private weak var bubbleViewTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var messageLabel: UILabel!
     
     var message: String? {
@@ -18,10 +19,15 @@ class IncomingMessageCell: UITableViewCell {
         }
     }
     
+    var isCompact: Bool = false {
+        didSet {
+            bubbleViewTopConstraint.constant = isCompact ? 1 : 5
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         bubbleView.layer.cornerRadius = 16.0
-//        contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
     }
     
     

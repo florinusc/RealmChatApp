@@ -11,3 +11,5 @@ struct User {
     let id: String
     let name: String
 }
+
+extension User: Equatable {}

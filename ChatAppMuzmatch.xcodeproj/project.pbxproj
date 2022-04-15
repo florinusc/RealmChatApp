@@ -29,6 +29,7 @@
 		9F9DAAF32805F8CD00C7C20B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAAF22805F8CD00C7C20B /* User.swift */; };
 		9F9DAAF52805F8E400C7C20B /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAAF42805F8E400C7C20B /* ChatViewModel.swift */; };
 		9FA5C0E92808728E00502D99 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0E82808728E00502D99 /* UIView+Extension.swift */; };
+		9FA5C0EB28094B5D00502D99 /* MessageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0EA28094B5D00502D99 /* MessageSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		9F9DAAF22805F8CD00C7C20B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9F9DAAF42805F8E400C7C20B /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		9FA5C0E82808728E00502D99 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		9FA5C0EA28094B5D00502D99 /* MessageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 			children = (
 				9F9DAAF02805F8A300C7C20B /* Message.swift */,
 				9F9DAAF22805F8CD00C7C20B /* User.swift */,
+				9FA5C0EA28094B5D00502D99 /* MessageSection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				9F9DAAF12805F8A300C7C20B /* Message.swift in Sources */,
 				9F9DAAED2805F61E00C7C20B /* StoryboardViewController.swift in Sources */,
 				9F9DAAE52805F29200C7C20B /* UITableView+Extension.swift in Sources */,
+				9FA5C0EB28094B5D00502D99 /* MessageSection.swift in Sources */,
 				9F9DAAF52805F8E400C7C20B /* ChatViewModel.swift in Sources */,
 				9F9DAAF32805F8CD00C7C20B /* User.swift in Sources */,
 			);

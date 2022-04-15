@@ -44,7 +44,7 @@ final class CustomInputBar: InputBarAccessoryView {
         isTranslucent = true
     }
     
-    func addView(center: CGPoint, width: CGFloat, _ completion: @escaping () -> Void) {
+    func addView(center: CGPoint, width: CGFloat, topPadding: CGFloat, _ completion: @escaping () -> Void) {
         let frame = convert(inputTextView.frame, from: contentView)
         let animatingView = UIView(frame: frame)
         animatingView.backgroundColor = .systemPink
@@ -64,7 +64,7 @@ final class CustomInputBar: InputBarAccessoryView {
         
         UIView.animate(withDuration: 0.35, delay: 0) {
             textLabel.frame = CGRect(x: 10, y: 10, width: width, height: textLabel.frame.height)
-            let newY = animatingView.frame.minY - ((animatingView.originOnWindow.y) - center.y) + 5
+            let newY = animatingView.frame.minY - ((animatingView.originOnWindow.y) - center.y) + topPadding
             let newFrame = CGRect(x: self.frame.width - width - 10,
                                   y: newY,
                                   width: width,

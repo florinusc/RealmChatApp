@@ -9,10 +9,6 @@ import UIKit
 import Combine
 import InputBarAccessoryView
 
-enum MessageSection {
-    case main
-}
-
 typealias DataSource = UITableViewDiffableDataSource<MessageSection, Message>
 typealias Snapshot = NSDiffableDataSourceSnapshot<MessageSection, Message>
 
@@ -69,23 +65,34 @@ class ChatViewController: UIViewController {
         
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.automaticallyAdjustsScrollIndicatorInsets = false
+        
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+        
     }
     
     private func createDataSource() -> DataSource {
         let dataSource = DataSource(tableView: tableView) { [weak self] (tableView, indexPath, itemIdentifier) -> UITableViewCell? in
             guard let self = self else { return nil }
-            let message = self.viewModel.messages[indexPath.row]
             
-            if message.sender.name != "Me" {
+            let message = itemIdentifier
+            
+            let isCompact = self.viewModel.isCompactMessage(at: indexPath)
+            
+            if !self.viewModel.isOwn(message: message) {
                 let incomingMessageCell: IncomingMessageCell = tableView.dequeueCell(for: indexPath)
                 incomingMessageCell.message = message.content
+                incomingMessageCell.isCompact = isCompact
                 return incomingMessageCell
             }
             
             let outgoingMessageCell: OutgoingMessageCell = tableView.dequeueCell(for: indexPath)
             outgoingMessageCell.message = message.content
+            outgoingMessageCell.isCompact = isCompact
             
-            if indexPath.row == (self.viewModel.messages.count - 1) && self.isAnimating {
+            let lastSection = self.viewModel.lastSection == self.viewModel.section(for: message)
+            let lastMessage = self.viewModel.lastMessage == message
+            
+            if lastSection && lastMessage && self.isAnimating {
                 outgoingMessageCell.isHidden = true
             } else {
                 outgoingMessageCell.isHidden = false
@@ -146,17 +153,21 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         isAnimating = true
         self.viewModel.addMessage(inputBar.inputTextView.text) {
+            let lastSectionIndex = self.viewModel.lastSectionIndex
+            let lastMessageIndex = self.viewModel.lastMessageIndex
+            let lastIndexPath = IndexPath(row: lastMessageIndex, section: lastSectionIndex)
             UIView.animate(withDuration: 0.15) {
-                self.tableView.scrollToRow(at: IndexPath(row: self.viewModel.messages.count - 1, section: 0), at: .bottom, animated: false)
+                self.tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: false)
             } completion: { _ in
                 guard
                     let customInputBar = inputBar as? CustomInputBar,
-                    let lastCell = self.tableView.cellForRow(at: IndexPath(row: self.viewModel.messages.count - 1, section: 0)) as? OutgoingMessageCell
+                    let lastCell = self.tableView.cellForRow(at: lastIndexPath) as? OutgoingMessageCell
                 else {
                     return
                 }
                 let lastCellGlobalPoint = lastCell.originOnWindow
-                customInputBar.addView(center: lastCellGlobalPoint, width: lastCell.bubbleWidth) {
+                let topPadding: CGFloat = self.viewModel.isCompactMessage(at: lastIndexPath) ? 1 : 5
+                customInputBar.addView(center: lastCellGlobalPoint, width: lastCell.bubbleWidth, topPadding: topPadding) {
                     lastCell.isHidden = false
                     self.isAnimating = false
                 }

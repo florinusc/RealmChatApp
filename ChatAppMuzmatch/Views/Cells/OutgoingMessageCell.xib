@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9QG-mP-CwI">
-                        <rect key="frame" x="312" y="5" width="167" height="124"/>
+                        <rect key="frame" x="312" y="10" width="167" height="124"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey!, How are you?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvC-pn-OyL">
                                 <rect key="frame" x="10" y="10" width="147" height="104"/>
@@ -37,8 +37,8 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="9QG-mP-CwI" secondAttribute="bottom" constant="5" id="8fB-c8-vPP"/>
-                    <constraint firstItem="9QG-mP-CwI" firstAttribute="top" secondItem="usG-DX-HFR" secondAttribute="top" constant="5" id="LWb-bg-YVo"/>
+                    <constraint firstAttribute="bottom" secondItem="9QG-mP-CwI" secondAttribute="bottom" id="8fB-c8-vPP"/>
+                    <constraint firstItem="9QG-mP-CwI" firstAttribute="top" secondItem="usG-DX-HFR" secondAttribute="top" constant="10" id="LWb-bg-YVo"/>
                     <constraint firstAttribute="trailing" secondItem="9QG-mP-CwI" secondAttribute="trailing" id="VBn-pv-Adk"/>
                     <constraint firstItem="9QG-mP-CwI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="usG-DX-HFR" secondAttribute="leading" constant="50" id="bKK-Vh-MW6"/>
                 </constraints>
@@ -46,6 +46,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="bubbleView" destination="9QG-mP-CwI" id="dHG-uV-2PT"/>
+                <outlet property="bubbleViewTopConstraint" destination="LWb-bg-YVo" id="du6-ND-Mpf"/>
                 <outlet property="messageLabel" destination="zvC-pn-OyL" id="z15-BD-hrC"/>
             </connections>
             <point key="canvasLocation" x="184.78260869565219" y="178.79464285714286"/>

@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bA2-xV-7Hi">
-                        <rect key="frame" x="0.0" y="5" width="167" height="161"/>
+                        <rect key="frame" x="0.0" y="5" width="167" height="166"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey!, How are you?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTR-z8-ktm">
-                                <rect key="frame" x="10" y="10" width="147" height="141"/>
+                                <rect key="frame" x="10" y="10" width="147" height="146"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bA2-xV-7Hi" secondAttribute="trailing" constant="50" id="71h-bT-bHG"/>
-                    <constraint firstAttribute="bottom" secondItem="bA2-xV-7Hi" secondAttribute="bottom" constant="5" id="S9r-Q7-MKV"/>
+                    <constraint firstAttribute="bottom" secondItem="bA2-xV-7Hi" secondAttribute="bottom" id="S9r-Q7-MKV"/>
                     <constraint firstItem="bA2-xV-7Hi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="d0f-Zk-OKO"/>
                     <constraint firstItem="bA2-xV-7Hi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="mGK-87-8m7"/>
                 </constraints>
@@ -47,6 +47,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="bubbleView" destination="bA2-xV-7Hi" id="M5F-zj-2D7"/>
+                <outlet property="bubbleViewTopConstraint" destination="mGK-87-8m7" id="WIl-N8-pmC"/>
                 <outlet property="messageLabel" destination="cTR-z8-ktm" id="nyH-jd-bQM"/>
             </connections>
             <point key="canvasLocation" x="205.79710144927537" y="150.33482142857142"/>
