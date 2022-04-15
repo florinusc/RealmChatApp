@@ -48,7 +48,7 @@ class ChatViewModel {
     
     init(messages: [Message] = []) {
         let otherUser = User(id: UUID().uuidString, name: "John")
-        let section = MessageSection(id: UUID().uuidString, firstTimeStamp: Date().addingTimeInterval(TimeInterval(-35)), messages: [
+        let section = MessageSection(id: UUID().uuidString, firstTimeStamp: Date().addingTimeInterval(TimeInterval(-35)), hasHeader: true, messages: [
             Message(id: UUID().uuidString,
                     sender: otherUser,
                     content: "Hey!",
@@ -73,11 +73,20 @@ class ChatViewModel {
         
         let message = Message(id: UUID().uuidString, sender: ownUser, content: messageContent, timeStamp: Date())
         
-        if lastMessage?.sender == ownUser && lastSection != nil {
+        var moreThanAnHourPassed: Bool {
+            if let lastSection = lastSection,
+               let lastTimeStamp = lastSection.messages.last?.timeStamp {
+                let differenceInSeconds = Int(message.timeStamp.timeIntervalSince(lastTimeStamp))
+                return differenceInSeconds > 3600
+            }
+            return true
+        }
+        
+        if lastMessage?.sender == ownUser && lastSection != nil && !moreThanAnHourPassed {
             snapshot.appendItems([message], toSection: lastSection)
             lastSection?.messages.append(message)
         } else {
-            let section = MessageSection(id: UUID().uuidString, firstTimeStamp: message.timeStamp, messages: [message])
+            let section = MessageSection(id: UUID().uuidString, firstTimeStamp: message.timeStamp, hasHeader: true, messages: [message])
             messageSections.append(section)
             snapshot.appendSections([section])
             snapshot.appendItems([message], toSection: section)
@@ -109,6 +118,16 @@ class ChatViewModel {
             return differenceInSeconds <= 20
         }
         return false
+    }
+    
+    func titleForHeader(in section: Int) -> String? {
+        let messageSection = messageSections[section]
+        guard let firstMessage = messageSection.messages.first else { return nil }
+        if Calendar.current.isDateInToday(firstMessage.timeStamp) {
+            return "Today, " + firstMessage.timeStamp.formatted(date: .omitted, time: .shortened)
+        } else {
+            return firstMessage.timeStamp.formatted(date: .abbreviated, time: .shortened)
+        }
     }
     
 }

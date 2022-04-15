@@ -60,13 +60,10 @@ class ChatViewController: UIViewController {
         
         tableView.keyboardDismissMode = .interactive
         
-        tableView.estimatedSectionHeaderHeight = .leastNonzeroMagnitude
         tableView.estimatedSectionFooterHeight = .leastNonzeroMagnitude
         
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.automaticallyAdjustsScrollIndicatorInsets = false
-        
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         
     }
     
@@ -144,7 +141,16 @@ extension ChatViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return .leastNonzeroMagnitude
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = viewModel.titleForHeader(in: section)
+        label.textAlignment = .center
+        label.textColor = .darkGray
+        label.font = .systemFont(ofSize: 10)
+        return label
     }
 }
 
@@ -157,7 +163,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             let lastMessageIndex = self.viewModel.lastMessageIndex
             let lastIndexPath = IndexPath(row: lastMessageIndex, section: lastSectionIndex)
             UIView.animate(withDuration: 0.15) {
-                self.tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: false)
+                self.tableView.scrollToRow(at: lastIndexPath, at: .top, animated: false)
             } completion: { _ in
                 guard
                     let customInputBar = inputBar as? CustomInputBar,

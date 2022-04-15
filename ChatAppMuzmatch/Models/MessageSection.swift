@@ -10,11 +10,13 @@ import Foundation
 class MessageSection {
     let id: String
     let firstTimeStamp: Date
+    let hasHeader: Bool
     var messages: [Message]
     
-    init(id: String, firstTimeStamp: Date, messages: [Message]) {
+    init(id: String, firstTimeStamp: Date, hasHeader: Bool, messages: [Message]) {
         self.id = id
         self.firstTimeStamp = firstTimeStamp
+        self.hasHeader = hasHeader
         self.messages = messages
     }
 }
