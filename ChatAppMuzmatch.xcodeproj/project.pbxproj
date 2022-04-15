@@ -31,6 +31,7 @@
 		9FA5C0E92808728E00502D99 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0E82808728E00502D99 /* UIView+Extension.swift */; };
 		9FA5C0EB28094B5D00502D99 /* MessageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0EA28094B5D00502D99 /* MessageSection.swift */; };
 		9FA5C0EF2809A6B200502D99 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0EE2809A6B200502D99 /* Constants.swift */; };
+		9FA5C0F12809AA7300502D99 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0F02809AA7300502D99 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		9FA5C0E82808728E00502D99 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9FA5C0EA28094B5D00502D99 /* MessageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSection.swift; sourceTree = "<group>"; };
 		9FA5C0EE2809A6B200502D99 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9FA5C0F02809AA7300502D99 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				9F9DAAEC2805F61E00C7C20B /* StoryboardViewController.swift */,
+				9FA5C0F02809AA7300502D99 /* ViewModel.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				9F9DAAE32805F25500C7C20B /* CustomInputBar.swift in Sources */,
 				9F37AA8C280569BF00688F3A /* AppDelegate.swift in Sources */,
 				9FA5C0EF2809A6B200502D99 /* Constants.swift in Sources */,
+				9FA5C0F12809AA7300502D99 /* ViewModel.swift in Sources */,
 				9F37AA96280569BF00688F3A /* ChatAppMuzmatch.xcdatamodeld in Sources */,
 				9F9DAAE02805EC9C00C7C20B /* IncomingMessageCell.swift in Sources */,
 				9F37AA8E280569BF00688F3A /* SceneDelegate.swift in Sources */,

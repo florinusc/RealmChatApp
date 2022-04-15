@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class ChatViewModel {
+class ChatViewModel: ViewModel {
     
     @Published private var messageSections: [MessageSection]
     
@@ -42,11 +42,12 @@ class ChatViewModel {
         return lastSection.messages.count - 1
     }
     
-    private let ownUser = User(id: UUID().uuidString, name: "Me")
+    private let currentUser: User
     
     private var snapshot = Snapshot()
     
-    init(messages: [Message] = []) {
+    init(currentUser: User = User(id: UUID().uuidString, name: "Me"), messages: [Message] = []) {
+        self.currentUser = currentUser
         let otherUser = User(id: UUID().uuidString, name: "John")
         let section = MessageSection(id: UUID().uuidString, firstTimeStamp: Date().addingTimeInterval(TimeInterval(-35)), hasHeader: true, messages: [
             Message(id: UUID().uuidString,
@@ -71,7 +72,10 @@ class ChatViewModel {
     
     func addMessage(_ messageContent: String, _ completion: (() -> Void)? = nil) {
         
-        let message = Message(id: UUID().uuidString, sender: ownUser, content: messageContent, timeStamp: Date())
+        let message = Message(id: UUID().uuidString,
+                              sender: currentUser,
+                              content: messageContent,
+                              timeStamp: Date())
         
         var moreThanAnHourPassed: Bool {
             if let lastSection = lastSection,
@@ -82,7 +86,9 @@ class ChatViewModel {
             return true
         }
         
-        if lastMessage?.sender == ownUser && lastSection != nil && !moreThanAnHourPassed {
+        if lastMessage?.sender == currentUser &&
+            lastSection != nil &&
+            !moreThanAnHourPassed {
             snapshot.appendItems([message], toSection: lastSection)
             lastSection?.messages.append(message)
         } else {
@@ -108,7 +114,7 @@ class ChatViewModel {
     }
     
     func isOwn(message: Message) -> Bool {
-        return message.sender == ownUser
+        return message.sender == currentUser
     }
     
     func isCompactMessage(at indexPath: IndexPath) -> Bool {

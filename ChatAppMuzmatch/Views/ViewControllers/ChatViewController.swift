@@ -12,7 +12,7 @@ import InputBarAccessoryView
 typealias DataSource = UITableViewDiffableDataSource<MessageSection, Message>
 typealias Snapshot = NSDiffableDataSourceSnapshot<MessageSection, Message>
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, ViewModelBased {
     
     private enum Animation {
         case keyboardWillShow
@@ -24,7 +24,7 @@ class ChatViewController: UIViewController {
 
     private let inputBar = CustomInputBar()
     
-    private let viewModel = ChatViewModel()
+    var viewModel: ChatViewModel!
     
     private var isAnimating = false
     
