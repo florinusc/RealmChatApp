@@ -17,7 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = ChatViewController.getInstance(with: ChatViewModel())
+        let factory = MessageFactory()
+        window?.rootViewController = ChatViewController.getInstance(with: ChatViewModel(currentUser: factory.currentUser, messages: factory.generateMessage()))
         window?.makeKeyAndVisible()
     }
 

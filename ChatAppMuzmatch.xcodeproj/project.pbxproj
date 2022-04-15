@@ -32,6 +32,7 @@
 		9FA5C0EB28094B5D00502D99 /* MessageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0EA28094B5D00502D99 /* MessageSection.swift */; };
 		9FA5C0EF2809A6B200502D99 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0EE2809A6B200502D99 /* Constants.swift */; };
 		9FA5C0F12809AA7300502D99 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0F02809AA7300502D99 /* ViewModel.swift */; };
+		9FA5C0F32809B4AE00502D99 /* MessageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0F22809B4AE00502D99 /* MessageFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		9FA5C0EA28094B5D00502D99 /* MessageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSection.swift; sourceTree = "<group>"; };
 		9FA5C0EE2809A6B200502D99 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9FA5C0F02809AA7300502D99 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		9FA5C0F22809B4AE00502D99 /* MessageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				9F9DAAEA2805F52300C7C20B /* Extensions */,
 				9F9DAAE22805F25500C7C20B /* CustomInputBar.swift */,
 				9FA5C0EE2809A6B200502D99 /* Constants.swift */,
+				9FA5C0F22809B4AE00502D99 /* MessageFactory.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				9F9DAAF12805F8A300C7C20B /* Message.swift in Sources */,
 				9F9DAAED2805F61E00C7C20B /* StoryboardViewController.swift in Sources */,
 				9F9DAAE52805F29200C7C20B /* UITableView+Extension.swift in Sources */,
+				9FA5C0F32809B4AE00502D99 /* MessageFactory.swift in Sources */,
 				9FA5C0EB28094B5D00502D99 /* MessageSection.swift in Sources */,
 				9F9DAAF52805F8E400C7C20B /* ChatViewModel.swift in Sources */,
 				9F9DAAF32805F8CD00C7C20B /* User.swift in Sources */,

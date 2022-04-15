@@ -64,7 +64,6 @@ class ChatViewController: UIViewController, ViewModelBased {
         
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.automaticallyAdjustsScrollIndicatorInsets = false
-        
     }
     
     private func createDataSource() -> DataSource {
