@@ -33,6 +33,8 @@
 		9FA5C0EF2809A6B200502D99 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0EE2809A6B200502D99 /* Constants.swift */; };
 		9FA5C0F12809AA7300502D99 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0F02809AA7300502D99 /* ViewModel.swift */; };
 		9FA5C0F32809B4AE00502D99 /* MessageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0F22809B4AE00502D99 /* MessageFactory.swift */; };
+		9FA5C0F6280A8DCF00502D99 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 9FA5C0F5280A8DCF00502D99 /* Realm */; };
+		9FA5C0F8280A8DCF00502D99 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9FA5C0F7280A8DCF00502D99 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +91,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FA5C0F8280A8DCF00502D99 /* RealmSwift in Frameworks */,
+				9FA5C0F6280A8DCF00502D99 /* Realm in Frameworks */,
 				9F37AAC42805B0FD00688F3A /* InputBarAccessoryView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +263,8 @@
 			name = ChatAppMuzmatch;
 			packageProductDependencies = (
 				9F37AAC32805B0FD00688F3A /* InputBarAccessoryView */,
+				9FA5C0F5280A8DCF00502D99 /* Realm */,
+				9FA5C0F7280A8DCF00502D99 /* RealmSwift */,
 			);
 			productName = ChatAppMuzmatch;
 			productReference = 9F37AA88280569BF00688F3A /* ChatAppMuzmatch.app */;
@@ -334,6 +340,7 @@
 			mainGroup = 9F37AA7F280569BE00688F3A;
 			packageReferences = (
 				9F37AAC22805B0FD00688F3A /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
+				9FA5C0F4280A8DCF00502D99 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 9F37AA89280569BF00688F3A /* Products */;
 			projectDirPath = "";
@@ -750,6 +757,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		9FA5C0F4280A8DCF00502D99 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -757,6 +772,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9F37AAC22805B0FD00688F3A /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */;
 			productName = InputBarAccessoryView;
+		};
+		9FA5C0F5280A8DCF00502D99 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9FA5C0F4280A8DCF00502D99 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		9FA5C0F7280A8DCF00502D99 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9FA5C0F4280A8DCF00502D99 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

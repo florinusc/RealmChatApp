@@ -26,6 +26,12 @@ class ChatViewController: UIViewController, ViewModelBased {
     
     var viewModel: ChatViewModel!
     
+    private var lastIndexPath: IndexPath {
+        let lastSectionIndex = self.viewModel.lastSectionIndex
+        let lastMessageIndex = self.viewModel.lastMessageIndex
+        return IndexPath(row: lastMessageIndex, section: lastSectionIndex)
+    }
+    
     private var isAnimating = false
     
     override var inputAccessoryView: UIView? {
@@ -50,6 +56,7 @@ class ChatViewController: UIViewController, ViewModelBased {
         setUpNotification()
         viewModel.dataSource = createDataSource()
         inputBar.delegate = self
+        scrollToBottom()
     }
     
     private func setUpTableView() {
@@ -115,7 +122,9 @@ class ChatViewController: UIViewController, ViewModelBased {
         guard let userInfo = notification.userInfo,
               let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
               let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
-        else { return }
+        else {
+            return
+        }
         
         UIView.animate(withDuration: duration) {
             switch animation {
@@ -124,7 +133,14 @@ class ChatViewController: UIViewController, ViewModelBased {
             case .keyboardWillHide:
                 self.tableViewBottomConstraint.constant = 15
             }
+            self.scrollToBottom()
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func scrollToBottom() {
+        DispatchQueue.main.async {
+            self.tableView.scrollToRow(at: self.lastIndexPath, at: .top, animated: false)
         }
     }
     
@@ -157,21 +173,19 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         isAnimating = true
+        inputBar.sendButton.isEnabled = false
         self.viewModel.addMessage(inputBar.inputTextView.text) {
-            let lastSectionIndex = self.viewModel.lastSectionIndex
-            let lastMessageIndex = self.viewModel.lastMessageIndex
-            let lastIndexPath = IndexPath(row: lastMessageIndex, section: lastSectionIndex)
             UIView.animate(withDuration: 0.15) {
-                self.tableView.scrollToRow(at: lastIndexPath, at: .top, animated: false)
+                self.scrollToBottom()
             } completion: { _ in
                 guard
                     let customInputBar = inputBar as? CustomInputBar,
-                    let lastCell = self.tableView.cellForRow(at: lastIndexPath) as? OutgoingMessageCell
+                    let lastCell = self.tableView.cellForRow(at: self.lastIndexPath) as? OutgoingMessageCell
                 else {
                     return
                 }
                 let lastCellGlobalPoint = lastCell.originOnWindow
-                let topPadding: CGFloat = self.viewModel.isCompactMessage(at: lastIndexPath) ? Constants.cellCompactTopConstraint : Constants.cellRegularTopConstraint
+                let topPadding: CGFloat = self.viewModel.isCompactMessage(at: self.lastIndexPath) ? Constants.cellCompactTopConstraint : Constants.cellRegularTopConstraint
                 customInputBar.addView(center: lastCellGlobalPoint, width: lastCell.bubbleWidth, topPadding: topPadding) {
                     lastCell.isHidden = false
                     self.isAnimating = false
