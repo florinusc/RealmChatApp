@@ -15,6 +15,8 @@ class ChatListViewModel: ViewModel {
     
     private let chats = [messageFactory.chat]
     
+    private let user: User
+    
     var dataSource: ChatListDataSource! {
         didSet {
             snapshot.appendSections([.main])
@@ -23,8 +25,12 @@ class ChatListViewModel: ViewModel {
         }
     }
     
+    init(user: User) {
+        self.user = user
+    }
+    
     func chatViewModel(at index: Int) -> ChatViewModel {
-        return ChatViewModel(chat: chats[index], currentUser: ChatListViewModel.messageFactory.currentUser)
+        return ChatViewModel(chat: chats[index], currentUser: user)
     }
     
 }

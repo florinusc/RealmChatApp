@@ -12,4 +12,4 @@ struct User {
     let name: String
 }
 
-extension User: Equatable {}
+extension User: Hashable {}
