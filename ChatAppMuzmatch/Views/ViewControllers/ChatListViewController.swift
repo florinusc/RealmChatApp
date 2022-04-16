@@ -26,10 +26,15 @@ class ChatListViewController: UIViewController, ViewModelBased, StoryboardViewCo
     }
     
     private func setUp() {
-        title = "Chat List"
-        navigationItem.backButtonTitle = ""
+        setUpNavBar()
         tableView.delegate = self
         viewModel.dataSource = createDataSource()
+    }
+    
+    private func setUpNavBar() {
+        title = "Chat List"
+        navigationItem.backButtonTitle = ""
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addChat))
     }
     
     private func createDataSource() -> ChatListDataSource {
@@ -41,6 +46,21 @@ class ChatListViewController: UIViewController, ViewModelBased, StoryboardViewCo
             return cell
         }
         return dataSource
+    }
+    
+    @objc private func addChat() {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Add new chat", message: "", preferredStyle: .alert)
+        alert.addTextField { alertTextField in
+            alertTextField.placeholder = "Name"
+            textField = alertTextField
+        }
+        let action = UIAlertAction(title: "Add chat", style: .default) { [weak self] action in
+            guard let name = textField.text, name != "" else { return }
+            self?.viewModel.addChat(with: name)
+        }
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
     
 }

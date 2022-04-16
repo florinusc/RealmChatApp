@@ -26,9 +26,11 @@ class ChatViewController: UIViewController, ViewModelBased, StoryboardViewContro
     
     var viewModel: ChatViewModel!
     
-    private var lastIndexPath: IndexPath {
-        let lastSectionIndex = self.viewModel.lastSectionIndex
-        let lastMessageIndex = self.viewModel.lastMessageIndex
+    private var lastIndexPath: IndexPath? {
+        guard let lastSectionIndex = self.viewModel.lastSectionIndex,
+              let lastMessageIndex = self.viewModel.lastMessageIndex else {
+            return nil
+        }
         return IndexPath(row: lastMessageIndex, section: lastSectionIndex)
     }
     
@@ -141,7 +143,8 @@ class ChatViewController: UIViewController, ViewModelBased, StoryboardViewContro
     
     private func scrollToBottom() {
         DispatchQueue.main.async {
-            self.tableView.scrollToRow(at: self.lastIndexPath, at: .top, animated: false)
+            guard let lastIndexPath = self.lastIndexPath else { return }
+            self.tableView.scrollToRow(at: lastIndexPath, at: .top, animated: false)
         }
     }
     
@@ -181,12 +184,13 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             } completion: { _ in
                 guard
                     let customInputBar = inputBar as? CustomInputBar,
-                    let lastCell = self.tableView.cellForRow(at: self.lastIndexPath) as? OutgoingMessageCell
+                    let lastIndexPath = self.lastIndexPath,
+                    let lastCell = self.tableView.cellForRow(at: lastIndexPath) as? OutgoingMessageCell
                 else {
                     return
                 }
                 let lastCellGlobalPoint = lastCell.originOnWindow
-                let topPadding: CGFloat = self.viewModel.isCompactMessage(at: self.lastIndexPath) ? Constants.cellCompactTopConstraint : Constants.cellRegularTopConstraint
+                let topPadding: CGFloat = self.viewModel.isCompactMessage(at: lastIndexPath) ? Constants.cellCompactTopConstraint : Constants.cellRegularTopConstraint
                 customInputBar.addView(center: lastCellGlobalPoint, width: lastCell.bubbleWidth, topPadding: topPadding) {
                     lastCell.isHidden = false
                     self.isAnimating = false

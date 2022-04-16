@@ -14,11 +14,11 @@ class MessageFactory {
     }
     
     lazy var currentUser: User = {
-        return User(id: UUID().uuidString, name: "Me")
+        return User(name: "Me")
     }()
     
     func generateMessage() -> [Message] {
-        let john = User(id: UUID().uuidString, name: "John")
+        let john = User(name: "John")
         return [
             Message(id: UUID().uuidString,
                     sender: john,

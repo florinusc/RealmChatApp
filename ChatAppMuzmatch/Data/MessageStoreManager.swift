@@ -23,7 +23,9 @@ class MessageStoreManager {
         let predicate = NSPredicate(format: "id == %@", chat.id)
         guard let dbChat = realm.objects(DBChat.self).filter(predicate).first else { return }
         try! realm.write {
-            dbChat.messages = chat.messages.map { DBMessage(message: $0) }
+            let list = List<DBMessage>.init()
+            list.append(objectsIn: chat.messages.map { DBMessage(message: $0) })
+            dbChat.messages = list
         }
     }
     
@@ -31,17 +33,32 @@ class MessageStoreManager {
         return (try! Realm().objects(DBChat.self)).map { Chat(dbChat: $0) }
     }
     
+    func save(_ user: User) {
+        let realm = try! Realm()
+        try! realm.write {
+            let dbUser = DBUser(user: user)
+            realm.add(dbUser)
+        }
+    }
+    
+    func fetchUsers() -> [User] {
+        return (try! Realm().objects(DBUser.self)).map { User(dbUser: $0) }
+    }
+    
 }
 
 class DBChat: Object {
     @objc dynamic var id = ""
     @objc dynamic var name = ""
-    @objc dynamic var messages = [DBMessage]()
+    var messages = List<DBMessage>()
     
-    init(chat: Chat) {
+    convenience required init(chat: Chat) {
+        self.init()
         self.id = chat.id
         self.name = chat.name
-        self.messages = chat.messages.map { DBMessage(message: $0) }
+        let list = List<DBMessage>.init()
+        list.append(objectsIn: chat.messages.map { DBMessage(message: $0) })
+        self.messages = list
     }
 }
 
@@ -51,7 +68,8 @@ class DBMessage: Object {
     @objc dynamic var timeStamp = Date()
     @objc dynamic var sender: DBUser!
     
-    init(message: Message) {
+    convenience required init(message: Message) {
+        self.init()
         self.id = message.id
         self.content = message.content
         self.timeStamp = message.timeStamp
@@ -63,7 +81,8 @@ class DBUser: Object {
     @objc dynamic var id = ""
     @objc dynamic var name = ""
     
-    init(user: User) {
+    convenience required init(user: User) {
+        self.init()
         self.id = user.id
         self.name = user.name
     }

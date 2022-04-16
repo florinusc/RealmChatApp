@@ -26,10 +26,15 @@ class UserListViewController: UIViewController, ViewModelBased, StoryboardViewCo
     }
     
     private func setUp() {
-        title = "Users"
-        navigationItem.backButtonTitle = ""
+        setUpNavBar()
         tableView.delegate = self
         viewModel.dataSource = createDataSource()
+    }
+    
+    private func setUpNavBar() {
+        title = "Users"
+        navigationItem.backButtonTitle = ""
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addUser))
     }
     
     private func createDataSource() -> UserListDataSource {
@@ -41,6 +46,21 @@ class UserListViewController: UIViewController, ViewModelBased, StoryboardViewCo
             return cell
         }
         return dataSource
+    }
+    
+    @objc private func addUser() {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Add new user", message: "", preferredStyle: .alert)
+        alert.addTextField { alertTextField in
+            alertTextField.placeholder = "Name"
+            textField = alertTextField
+        }
+        let action = UIAlertAction(title: "Add user", style: .default) { [weak self] action in
+            guard let name = textField.text, name != "" else { return }
+            self?.viewModel.addUser(with: name)
+        }
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
     
 }

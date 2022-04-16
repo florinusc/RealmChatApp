@@ -31,14 +31,19 @@ class ChatViewModel: ViewModel {
         return snapshot.sectionIdentifiers.last?.messages.last
     }
     
-    var lastSectionIndex: Int {
-        return snapshot.sectionIdentifiers.count - 1
+    var lastSectionIndex: Int? {
+        if snapshot.sectionIdentifiers.count > 0 {
+            return snapshot.sectionIdentifiers.count - 1
+        } else {
+            return nil
+        }
     }
     
-    var lastMessageIndex: Int {
+    var lastMessageIndex: Int? {
         guard let lastSection = lastSection else {
-            return 0
+            return nil
         }
+        guard lastSection.messages.count > 0 else { return nil }
         return lastSection.messages.count - 1
     }
     
