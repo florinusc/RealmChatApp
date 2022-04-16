@@ -9,10 +9,10 @@ import UIKit
 import Combine
 import InputBarAccessoryView
 
-typealias DataSource = UITableViewDiffableDataSource<MessageSection, Message>
-typealias Snapshot = NSDiffableDataSourceSnapshot<MessageSection, Message>
+typealias ChatDataSource = UITableViewDiffableDataSource<MessageSection, Message>
+typealias ChatSnapshot = NSDiffableDataSourceSnapshot<MessageSection, Message>
 
-class ChatViewController: UIViewController, ViewModelBased {
+class ChatViewController: UIViewController, ViewModelBased, StoryboardViewController {
     
     private enum Animation {
         case keyboardWillShow
@@ -52,6 +52,7 @@ class ChatViewController: UIViewController, ViewModelBased {
     }
     
     private func setUp() {
+        title = viewModel.chatName
         setUpTableView()
         setUpNotification()
         viewModel.dataSource = createDataSource()
@@ -73,8 +74,8 @@ class ChatViewController: UIViewController, ViewModelBased {
         tableView.automaticallyAdjustsScrollIndicatorInsets = false
     }
     
-    private func createDataSource() -> DataSource {
-        let dataSource = DataSource(tableView: tableView) { [weak self] (tableView, indexPath, itemIdentifier) -> UITableViewCell? in
+    private func createDataSource() -> ChatDataSource {
+        let dataSource = ChatDataSource(tableView: tableView) { [weak self] (tableView, indexPath, itemIdentifier) -> UITableViewCell? in
             guard let self = self else { return nil }
             
             let message = itemIdentifier
@@ -195,5 +196,3 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     }
     
 }
-
-extension ChatViewController: StoryboardViewController {}

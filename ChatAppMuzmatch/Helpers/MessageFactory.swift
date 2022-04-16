@@ -9,6 +9,10 @@ import Foundation
 
 class MessageFactory {
     
+    var chat: Chat {
+        return Chat(messages: generateMessage(), name: "chat 1")
+    }
+    
     lazy var currentUser: User = {
         return User(id: UUID().uuidString, name: "Me")
     }()

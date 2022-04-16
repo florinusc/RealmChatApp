@@ -12,7 +12,7 @@ class ChatViewModel: ViewModel {
     
     @Published private var messageSections = [MessageSection]()
     
-    var dataSource: DataSource! {
+    var dataSource: ChatDataSource! {
         didSet {
             snapshot.appendSections(messageSections)
             for section in messageSections {
@@ -42,13 +42,19 @@ class ChatViewModel: ViewModel {
         return lastSection.messages.count - 1
     }
     
+    var chatName: String {
+        return chat.name
+    }
+    
+    private let chat: Chat
     private let currentUser: User
     
-    private var snapshot = Snapshot()
+    private var snapshot = ChatSnapshot()
     
-    init(currentUser: User, messages: [Message]) {
+    init(chat: Chat, currentUser: User) {
+        self.chat = chat
         self.currentUser = currentUser
-        self.messageSections = processMessages(messages: messages)
+        self.messageSections = processMessages(messages: chat.messages)
     }
     
     private func processMessages(messages: [Message]) -> [MessageSection] {
@@ -117,6 +123,8 @@ class ChatViewModel: ViewModel {
         }
         
         dataSource.apply(snapshot, animatingDifferences: false, completion: completion)
+        
+        chat.addMessage(message: message)
     }
     
     func section(for message: Message) -> MessageSection? {
