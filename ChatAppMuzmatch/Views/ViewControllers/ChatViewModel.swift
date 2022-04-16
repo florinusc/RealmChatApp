@@ -53,12 +53,14 @@ class ChatViewModel: ViewModel {
     
     private let chat: Chat
     private let currentUser: User
+    private let dataManager: MessageStoreManager
     
     private var snapshot = ChatSnapshot()
     
-    init(chat: Chat, currentUser: User) {
+    init(chat: Chat, currentUser: User, dataManager: MessageStoreManager) {
         self.chat = chat
         self.currentUser = currentUser
+        self.dataManager = dataManager
         self.messageSections = processMessages(messages: chat.messages)
     }
     
@@ -80,7 +82,7 @@ class ChatViewModel: ViewModel {
                     return true
                 }
                 
-                if lastMessage.sender != message.sender || moreThanAnHourPassed {
+                if lastMessage.senderId != message.senderId || moreThanAnHourPassed {
                     let section = createNewSection(with: message)
                     sections.append(section)
                 } else {
@@ -103,7 +105,7 @@ class ChatViewModel: ViewModel {
     
     func addMessage(_ messageContent: String, _ completion: (() -> Void)? = nil) {
         let message = Message(id: UUID().uuidString,
-                              sender: currentUser,
+                              senderId: currentUser.id,
                               content: messageContent,
                               timeStamp: Date())
         var moreThanAnHourPassed: Bool {
@@ -115,7 +117,7 @@ class ChatViewModel: ViewModel {
             return true
         }
         
-        if lastMessage?.sender == currentUser &&
+        if lastMessage?.senderId == currentUser.id &&
             lastSection != nil &&
             !moreThanAnHourPassed {
             snapshot.appendItems([message], toSection: lastSection)
@@ -130,6 +132,8 @@ class ChatViewModel: ViewModel {
         dataSource.apply(snapshot, animatingDifferences: false, completion: completion)
         
         chat.addMessage(message: message)
+        
+        dataManager.update(chat, with: message)
     }
     
     func section(for message: Message) -> MessageSection? {
@@ -145,7 +149,7 @@ class ChatViewModel: ViewModel {
     }
     
     func isOwn(message: Message) -> Bool {
-        return message.sender == currentUser
+        return message.senderId == currentUser.id
     }
     
     func isCompactMessage(at indexPath: IndexPath) -> Bool {

@@ -18,6 +18,12 @@ class Chat {
         self.name = name
     }
     
+    init(id: String, messages: [Message], name: String) {
+        self.id = id
+        self.messages = messages
+        self.name = name
+    }
+    
     func addMessage(message: Message) {
         messages.append(message)
     }

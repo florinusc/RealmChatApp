@@ -9,7 +9,7 @@ import Foundation
 
 struct Message {
     let id: String
-    let sender: User
+    let senderId: String
     let content: String
     let timeStamp: Date
 }

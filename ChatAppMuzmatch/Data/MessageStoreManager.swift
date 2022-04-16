@@ -18,14 +18,11 @@ class MessageStoreManager {
         }
     }
     
-    func update(_ chat: Chat) {
+    func update(_ chat: Chat, with message: Message) {
         let realm = try! Realm()
-        let predicate = NSPredicate(format: "id == %@", chat.id)
-        guard let dbChat = realm.objects(DBChat.self).filter(predicate).first else { return }
+        guard let dbChat = realm.objects(DBChat.self).where({ $0.id == chat.id }).first else { return }
         try! realm.write {
-            let list = List<DBMessage>.init()
-            list.append(objectsIn: chat.messages.map { DBMessage(message: $0) })
-            dbChat.messages = list
+            dbChat.messages.append(DBMessage(message: message))
         }
     }
     
@@ -42,15 +39,17 @@ class MessageStoreManager {
     }
     
     func fetchUsers() -> [User] {
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+
         return (try! Realm().objects(DBUser.self)).map { User(dbUser: $0) }
     }
     
 }
 
 class DBChat: Object {
-    @objc dynamic var id = ""
-    @objc dynamic var name = ""
-    var messages = List<DBMessage>()
+    @Persisted(primaryKey: true) var id = ""
+    @Persisted var name = ""
+    @Persisted var messages = List<DBMessage>()
     
     convenience required init(chat: Chat) {
         self.init()
@@ -63,23 +62,23 @@ class DBChat: Object {
 }
 
 class DBMessage: Object {
-    @objc dynamic var id = ""
-    @objc dynamic var content = ""
-    @objc dynamic var timeStamp = Date()
-    @objc dynamic var sender: DBUser!
+    @Persisted(primaryKey: true) var id = ""
+    @Persisted var content = ""
+    @Persisted var timeStamp = Date()
+    @Persisted var senderId = ""
     
     convenience required init(message: Message) {
         self.init()
         self.id = message.id
         self.content = message.content
         self.timeStamp = message.timeStamp
-        self.sender = DBUser(user: message.sender)
+        self.senderId = message.senderId
     }
 }
 
 class DBUser: Object {
-    @objc dynamic var id = ""
-    @objc dynamic var name = ""
+    @Persisted(primaryKey: true) dynamic var id = ""
+    @Persisted dynamic var name = ""
     
     convenience required init(user: User) {
         self.init()
@@ -90,7 +89,7 @@ class DBUser: Object {
 
 fileprivate extension Chat {
     convenience init(dbChat: DBChat) {
-        self.init(messages: dbChat.messages.map { Message(dbMessage: $0) }, name: dbChat.name)
+        self.init(id: dbChat.id, messages: dbChat.messages.map { Message(dbMessage: $0) }, name: dbChat.name)
     }
 }
 
@@ -99,7 +98,7 @@ fileprivate extension Message {
         self.id = dbMessage.id
         self.content = dbMessage.content
         self.timeStamp = dbMessage.timeStamp
-        self.sender = User(dbUser: dbMessage.sender)
+        self.senderId = dbMessage.senderId
     }
 }
 

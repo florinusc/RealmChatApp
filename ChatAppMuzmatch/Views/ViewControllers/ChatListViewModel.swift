@@ -9,8 +9,6 @@ import Foundation
 
 class ChatListViewModel: ViewModel {
     
-    private static let messageFactory = MessageFactory()
-    
     private var snapshot = ChatListSnapshot()
     
     private let user: User
@@ -18,10 +16,7 @@ class ChatListViewModel: ViewModel {
     
     var dataSource: ChatListDataSource! {
         didSet {
-            snapshot.appendSections([.main])
-            let chats = dataManager.fetchChats()
-            snapshot.appendItems(chats, toSection: .main)
-            dataSource.apply(snapshot, animatingDifferences: false)
+            updateChats()
         }
     }
     
@@ -32,7 +27,7 @@ class ChatListViewModel: ViewModel {
     
     func chatViewModel(at index: Int) -> ChatViewModel {
         let chats = snapshot.itemIdentifiers
-        return ChatViewModel(chat: chats[index], currentUser: user)
+        return ChatViewModel(chat: chats[index], currentUser: user, dataManager: dataManager)
     }
     
     func addChat(with name: String) {
@@ -40,6 +35,14 @@ class ChatListViewModel: ViewModel {
         snapshot.appendItems([chat], toSection: .main)
         dataSource.apply(snapshot)
         dataManager.save(chat)
+    }
+    
+    func updateChats() {
+        let chats = dataManager.fetchChats()
+        snapshot.deleteAllItems()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(chats, toSection: .main)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
     
 }

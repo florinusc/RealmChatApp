@@ -25,6 +25,11 @@ class ChatListViewController: UIViewController, ViewModelBased, StoryboardViewCo
         setUp()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.updateChats()
+    }
+    
     private func setUp() {
         setUpNavBar()
         tableView.delegate = self
