@@ -8,7 +8,6 @@
 import UIKit
 
 class IncomingMessageCell: UITableViewCell {
-    
     @IBOutlet private weak var bubbleView: UIView!
     @IBOutlet private weak var bubbleViewTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var messageLabel: UILabel!
@@ -29,6 +28,4 @@ class IncomingMessageCell: UITableViewCell {
         super.awakeFromNib()
         bubbleView.layer.cornerRadius = Constants.bubbleCornerRadius
     }
-    
-    
 }

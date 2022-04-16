@@ -1,5 +1,5 @@
 //
-//  MessageStoreManager.swift
+//  DataBaseManager.swift
 //  ChatAppMuzmatch
 //
 //  Created by Florin Uscatu on 16.04.2022.
@@ -8,8 +8,7 @@
 import Foundation
 import RealmSwift
 
-class MessageStoreManager {
-    
+class DataBaseManager {
     func save(_ chat: Chat) {
         let realm = try! Realm()
         try! realm.write {
@@ -39,51 +38,7 @@ class MessageStoreManager {
     }
     
     func fetchUsers() -> [User] {
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
-
         return (try! Realm().objects(DBUser.self)).map { User(dbUser: $0) }
-    }
-    
-}
-
-class DBChat: Object {
-    @Persisted(primaryKey: true) var id = ""
-    @Persisted var name = ""
-    @Persisted var messages = List<DBMessage>()
-    
-    convenience required init(chat: Chat) {
-        self.init()
-        self.id = chat.id
-        self.name = chat.name
-        let list = List<DBMessage>.init()
-        list.append(objectsIn: chat.messages.map { DBMessage(message: $0) })
-        self.messages = list
-    }
-}
-
-class DBMessage: Object {
-    @Persisted(primaryKey: true) var id = ""
-    @Persisted var content = ""
-    @Persisted var timeStamp = Date()
-    @Persisted var senderId = ""
-    
-    convenience required init(message: Message) {
-        self.init()
-        self.id = message.id
-        self.content = message.content
-        self.timeStamp = message.timeStamp
-        self.senderId = message.senderId
-    }
-}
-
-class DBUser: Object {
-    @Persisted(primaryKey: true) dynamic var id = ""
-    @Persisted dynamic var name = ""
-    
-    convenience required init(user: User) {
-        self.init()
-        self.id = user.id
-        self.name = user.name
     }
 }
 

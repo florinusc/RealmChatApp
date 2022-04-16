@@ -6,11 +6,11 @@
 //
 
 import Foundation
-import Combine
 
 class ChatViewModel: ViewModel {
-    
-    @Published private var messageSections = [MessageSection]()
+    private let chat: Chat
+    private let currentUser: User
+    private let dataManager: DataBaseManager
     
     var dataSource: ChatDataSource! {
         didSet {
@@ -51,56 +51,14 @@ class ChatViewModel: ViewModel {
         return chat.name
     }
     
-    private let chat: Chat
-    private let currentUser: User
-    private let dataManager: MessageStoreManager
-    
     private var snapshot = ChatSnapshot()
+    private var messageSections = [MessageSection]()
     
-    init(chat: Chat, currentUser: User, dataManager: MessageStoreManager) {
+    init(chat: Chat, currentUser: User, dataManager: DataBaseManager) {
         self.chat = chat
         self.currentUser = currentUser
         self.dataManager = dataManager
         self.messageSections = processMessages(messages: chat.messages)
-    }
-    
-    private func processMessages(messages: [Message]) -> [MessageSection] {
-        let sortedMessages = messages.sorted(by: { $0.timeStamp < $1.timeStamp })
-        
-        var sections = [MessageSection]()
-        
-        for message in sortedMessages {
-            let lastSection = sections.last
-            
-            if let lastSection = lastSection, let lastMessage = lastSection.messages.last {
-                
-                var moreThanAnHourPassed: Bool {
-                    if let lastTimeStamp = lastSection.messages.last?.timeStamp {
-                        let differenceInSeconds = Int(message.timeStamp.timeIntervalSince(lastTimeStamp))
-                        return differenceInSeconds > 3600
-                    }
-                    return true
-                }
-                
-                if lastMessage.senderId != message.senderId || moreThanAnHourPassed {
-                    let section = createNewSection(with: message)
-                    sections.append(section)
-                } else {
-                    lastSection.messages.append(message)
-                }
-                
-            } else {
-                let section = createNewSection(with: message)
-                sections.append(section)
-            }
-        }
-        
-        return sections
-    }
-    
-    private func createNewSection(with message: Message) -> MessageSection {
-        let section = MessageSection(id: UUID().uuidString, firstTimeStamp: message.timeStamp, hasHeader: true, messages: [message])
-        return section
     }
     
     func addMessage(_ messageContent: String, _ completion: (() -> Void)? = nil) {
@@ -171,4 +129,42 @@ class ChatViewModel: ViewModel {
         }
     }
     
+    private func processMessages(messages: [Message]) -> [MessageSection] {
+        let sortedMessages = messages.sorted(by: { $0.timeStamp < $1.timeStamp })
+        
+        var sections = [MessageSection]()
+        
+        for message in sortedMessages {
+            let lastSection = sections.last
+            
+            if let lastSection = lastSection, let lastMessage = lastSection.messages.last {
+                
+                var moreThanAnHourPassed: Bool {
+                    if let lastTimeStamp = lastSection.messages.last?.timeStamp {
+                        let differenceInSeconds = Int(message.timeStamp.timeIntervalSince(lastTimeStamp))
+                        return differenceInSeconds > 3600
+                    }
+                    return true
+                }
+                
+                if lastMessage.senderId != message.senderId || moreThanAnHourPassed {
+                    let section = createNewSection(with: message)
+                    sections.append(section)
+                } else {
+                    lastSection.messages.append(message)
+                }
+                
+            } else {
+                let section = createNewSection(with: message)
+                sections.append(section)
+            }
+        }
+        
+        return sections
+    }
+    
+    private func createNewSection(with message: Message) -> MessageSection {
+        let section = MessageSection(id: UUID().uuidString, firstTimeStamp: message.timeStamp, hasHeader: true, messages: [message])
+        return section
+    }
 }

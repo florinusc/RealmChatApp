@@ -8,10 +8,7 @@
 import Foundation
 
 class UserListViewModel: ViewModel {
-    
-    private let dataManager: MessageStoreManager
-    
-    private var snapshot = UserListSnapshot()
+    private let dataManager: DataBaseManager
     
     var dataSource: UserListDataSource! {
         didSet {
@@ -22,7 +19,9 @@ class UserListViewModel: ViewModel {
         }
     }
     
-    init(dataManager: MessageStoreManager) {
+    private var snapshot = UserListSnapshot()
+    
+    init(dataManager: DataBaseManager) {
         self.dataManager = dataManager
     }
     
@@ -36,5 +35,4 @@ class UserListViewModel: ViewModel {
         dataSource.apply(snapshot)
         dataManager.save(user)
     }
-    
 }

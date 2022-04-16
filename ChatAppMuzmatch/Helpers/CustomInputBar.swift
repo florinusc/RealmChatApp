@@ -9,7 +9,6 @@ import UIKit
 import InputBarAccessoryView
 
 final class CustomInputBar: InputBarAccessoryView {
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -79,5 +78,4 @@ final class CustomInputBar: InputBarAccessoryView {
             completion()
         }
     }
-    
 }

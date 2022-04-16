@@ -8,11 +8,8 @@
 import Foundation
 
 class ChatListViewModel: ViewModel {
-    
-    private var snapshot = ChatListSnapshot()
-    
     private let user: User
-    private let dataManager: MessageStoreManager
+    private let dataManager: DataBaseManager
     
     var dataSource: ChatListDataSource! {
         didSet {
@@ -20,7 +17,9 @@ class ChatListViewModel: ViewModel {
         }
     }
     
-    init(user: User, dataManager: MessageStoreManager) {
+    private var snapshot = ChatListSnapshot()
+    
+    init(user: User, dataManager: DataBaseManager) {
         self.user = user
         self.dataManager = dataManager
     }
@@ -44,5 +43,4 @@ class ChatListViewModel: ViewModel {
         snapshot.appendItems(chats, toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
-    
 }

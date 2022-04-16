@@ -15,7 +15,6 @@ typealias ChatListDataSource = UITableViewDiffableDataSource<ChatListSection, Ch
 typealias ChatListSnapshot = NSDiffableDataSourceSnapshot<ChatListSection, Chat>
 
 class ChatListViewController: UIViewController, ViewModelBased, StoryboardViewController {
-    
     @IBOutlet private weak var tableView: UITableView!
     
     var viewModel: ChatListViewModel!

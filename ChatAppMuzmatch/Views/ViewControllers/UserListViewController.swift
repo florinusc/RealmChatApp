@@ -15,7 +15,6 @@ typealias UserListDataSource = UITableViewDiffableDataSource<UserListSection, Us
 typealias UserListSnapshot = NSDiffableDataSourceSnapshot<UserListSection, User>
 
 class UserListViewController: UIViewController, ViewModelBased, StoryboardViewController {
-    
     @IBOutlet private weak var tableView: UITableView!
     
     var viewModel: UserListViewModel!
@@ -62,7 +61,6 @@ class UserListViewController: UIViewController, ViewModelBased, StoryboardViewCo
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
-    
 }
 
 extension UserListViewController: UITableViewDelegate {

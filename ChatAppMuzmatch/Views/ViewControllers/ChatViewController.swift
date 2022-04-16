@@ -13,7 +13,6 @@ typealias ChatDataSource = UITableViewDiffableDataSource<MessageSection, Message
 typealias ChatSnapshot = NSDiffableDataSourceSnapshot<MessageSection, Message>
 
 class ChatViewController: UIViewController, ViewModelBased, StoryboardViewController {
-    
     private enum Animation {
         case keyboardWillShow
         case keyboardWillHide
@@ -26,6 +25,14 @@ class ChatViewController: UIViewController, ViewModelBased, StoryboardViewContro
     
     var viewModel: ChatViewModel!
     
+    override var inputAccessoryView: UIView? {
+        return inputBar
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
     private var lastIndexPath: IndexPath? {
         guard let lastSectionIndex = self.viewModel.lastSectionIndex,
               let lastMessageIndex = self.viewModel.lastMessageIndex else {
@@ -35,14 +42,6 @@ class ChatViewController: UIViewController, ViewModelBased, StoryboardViewContro
     }
     
     private var isAnimating = false
-    
-    override var inputAccessoryView: UIView? {
-        return inputBar
-    }
-    
-    override var canBecomeFirstResponder: Bool {
-        return true
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,7 +173,6 @@ extension ChatViewController: UITableViewDelegate {
 }
 
 extension ChatViewController: InputBarAccessoryViewDelegate {
-    
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         isAnimating = true
         inputBar.sendButton.isEnabled = false
@@ -198,5 +196,4 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             }
         }
     }
-    
 }
