@@ -66,14 +66,7 @@ class ChatViewModel: ViewModel {
                               senderId: currentUser.id,
                               content: messageContent,
                               timeStamp: Date())
-        var moreThanAnHourPassed: Bool {
-            if let lastSection = lastSection,
-               let lastTimeStamp = lastSection.messages.last?.timeStamp {
-                let differenceInSeconds = Int(message.timeStamp.timeIntervalSince(lastTimeStamp))
-                return differenceInSeconds > 3600
-            }
-            return true
-        }
+        let moreThanAnHourPassed = checkIfAnHourPassed(lastSection: lastSection, message: message)
         
         if lastMessage?.senderId == currentUser.id &&
             lastSection != nil &&
@@ -139,13 +132,7 @@ class ChatViewModel: ViewModel {
             
             if let lastSection = lastSection, let lastMessage = lastSection.messages.last {
                 
-                var moreThanAnHourPassed: Bool {
-                    if let lastTimeStamp = lastSection.messages.last?.timeStamp {
-                        let differenceInSeconds = Int(message.timeStamp.timeIntervalSince(lastTimeStamp))
-                        return differenceInSeconds > 3600
-                    }
-                    return true
-                }
+                let moreThanAnHourPassed = checkIfAnHourPassed(lastSection: lastSection, message: message)
                 
                 if lastMessage.senderId != message.senderId || moreThanAnHourPassed {
                     let section = createNewSection(with: message)
@@ -166,5 +153,14 @@ class ChatViewModel: ViewModel {
     private func createNewSection(with message: Message) -> MessageSection {
         let section = MessageSection(id: UUID().uuidString, firstTimeStamp: message.timeStamp, hasHeader: true, messages: [message])
         return section
+    }
+    
+    private func checkIfAnHourPassed(lastSection: MessageSection?, message: Message) -> Bool {
+        if let lastSection = lastSection,
+           let lastTimeStamp = lastSection.messages.last?.timeStamp {
+            let differenceInSeconds = Int(message.timeStamp.timeIntervalSince(lastTimeStamp))
+            return differenceInSeconds > 3600
+        }
+        return true
     }
 }

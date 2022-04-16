@@ -80,32 +80,39 @@ class ChatViewController: UIViewController, ViewModelBased, StoryboardViewContro
             guard let self = self else { return nil }
             
             let message = itemIdentifier
-            
             let isCompact = self.viewModel.isCompactMessage(at: indexPath)
             
             if !self.viewModel.isOwn(message: message) {
-                let incomingMessageCell: IncomingMessageCell = tableView.dequeueCell(for: indexPath)
-                incomingMessageCell.message = message.content
-                incomingMessageCell.isCompact = isCompact
-                return incomingMessageCell
+                return self.generateIncomingMessageCell(indexPath: indexPath, message: message, isCompact: isCompact)
             }
             
-            let outgoingMessageCell: OutgoingMessageCell = tableView.dequeueCell(for: indexPath)
-            outgoingMessageCell.message = message.content
-            outgoingMessageCell.isCompact = isCompact
-            
-            let lastSection = self.viewModel.lastSection == self.viewModel.section(for: message)
-            let lastMessage = self.viewModel.lastMessage == message
-            
-            if lastSection && lastMessage && self.isAnimating {
-                outgoingMessageCell.isHidden = true
-            } else {
-                outgoingMessageCell.isHidden = false
-            }
-            
-            return outgoingMessageCell
+            return self.generateOutgoingMessageCell(indexPath: indexPath, message: message, isCompact: isCompact)
         }
         return dataSource
+    }
+    
+    private func generateIncomingMessageCell(indexPath: IndexPath, message: Message, isCompact: Bool) -> IncomingMessageCell {
+        let incomingMessageCell: IncomingMessageCell = tableView.dequeueCell(for: indexPath)
+        incomingMessageCell.message = message.content
+        incomingMessageCell.isCompact = isCompact
+        return incomingMessageCell
+    }
+    
+    private func generateOutgoingMessageCell(indexPath: IndexPath, message: Message, isCompact: Bool) -> OutgoingMessageCell {
+        let outgoingMessageCell: OutgoingMessageCell = tableView.dequeueCell(for: indexPath)
+        outgoingMessageCell.message = message.content
+        outgoingMessageCell.isCompact = isCompact
+        
+        let isLastSection = viewModel.lastSection == viewModel.section(for: message)
+        let isLastMessage = viewModel.lastMessage == message
+        
+        if isLastSection && isLastMessage && isAnimating {
+            outgoingMessageCell.isHidden = true
+        } else {
+            outgoingMessageCell.isHidden = false
+        }
+        
+        return outgoingMessageCell
     }
 
     private func setUpNotification() {
@@ -176,11 +183,12 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         isAnimating = true
         inputBar.sendButton.isEnabled = false
-        self.viewModel.addMessage(inputBar.inputTextView.text) {
+        viewModel.addMessage(inputBar.inputTextView.text) {
             UIView.animate(withDuration: 0.15) {
                 self.scrollToBottom()
-            } completion: { _ in
+            } completion: { [weak self] _ in
                 guard
+                    let self = self,
                     let customInputBar = inputBar as? CustomInputBar,
                     let lastIndexPath = self.lastIndexPath,
                     let lastCell = self.tableView.cellForRow(at: lastIndexPath) as? OutgoingMessageCell
