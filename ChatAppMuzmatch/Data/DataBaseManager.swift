@@ -9,36 +9,36 @@ import Foundation
 import RealmSwift
 
 class DataBaseManager {
-    func save(_ chat: Chat) {
+    func save(_ chat: Chat) throws {
         let realm = try! Realm()
-        try! realm.write {
+        try realm.write {
             let dbChat = DBChat(chat: chat)
             realm.add(dbChat)
         }
     }
     
-    func update(_ chat: Chat, with message: Message) {
+    func update(_ chat: Chat, with message: Message) throws {
         let realm = try! Realm()
         guard let dbChat = realm.objects(DBChat.self).where({ $0.id == chat.id }).first else { return }
-        try! realm.write {
+        try realm.write {
             dbChat.messages.append(DBMessage(message: message))
         }
     }
     
-    func fetchChats() -> [Chat] {
-        return (try! Realm().objects(DBChat.self)).map { Chat(dbChat: $0) }
+    func fetchChats() throws -> [Chat] {
+        return (try Realm().objects(DBChat.self)).map { Chat(dbChat: $0) }
     }
     
-    func save(_ user: User) {
+    func save(_ user: User) throws {
         let realm = try! Realm()
-        try! realm.write {
+        try realm.write {
             let dbUser = DBUser(user: user)
             realm.add(dbUser)
         }
     }
     
-    func fetchUsers() -> [User] {
-        return (try! Realm().objects(DBUser.self)).map { User(dbUser: $0) }
+    func fetchUsers() throws -> [User] {
+        return (try Realm().objects(DBUser.self)).map { User(dbUser: $0) }
     }
 }
 

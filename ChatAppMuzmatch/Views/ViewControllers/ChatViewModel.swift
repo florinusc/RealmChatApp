@@ -14,12 +14,7 @@ class ChatViewModel: ViewModel {
     
     var dataSource: ChatDataSource! {
         didSet {
-            snapshot.appendSections(messageSections)
-            for section in messageSections {
-                snapshot.appendItems(section.messages, toSection: section)
-            }
-            dataSource.apply(snapshot, animatingDifferences: false)
-            dataSource.defaultRowAnimation = .none
+            setUpDataSource()
         }
     }
     
@@ -80,11 +75,10 @@ class ChatViewModel: ViewModel {
             snapshot.appendItems([message], toSection: section)
         }
         
-        dataSource.apply(snapshot, animatingDifferences: false, completion: completion)
-        
         chat.addMessage(message: message)
+        try? dataManager.update(chat, with: message)
         
-        dataManager.update(chat, with: message)
+        dataSource.apply(snapshot, animatingDifferences: false, completion: completion)
     }
     
     func section(for message: Message) -> MessageSection? {
@@ -120,6 +114,15 @@ class ChatViewModel: ViewModel {
         } else {
             return firstMessage.timeStamp.formatted(date: .abbreviated, time: .shortened)
         }
+    }
+    
+    private func setUpDataSource() {
+        snapshot.appendSections(messageSections)
+        for section in messageSections {
+            snapshot.appendItems(section.messages, toSection: section)
+        }
+        dataSource.apply(snapshot, animatingDifferences: false)
+        dataSource.defaultRowAnimation = .none
     }
     
     private func processMessages(messages: [Message]) -> [MessageSection] {

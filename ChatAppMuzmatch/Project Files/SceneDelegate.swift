@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let dataBaseManager = DataBaseManager()
         let userListViewController = UserListViewController.getInstance(with: UserListViewModel(dataManager: dataBaseManager))
         let navigationController = UINavigationController(rootViewController: userListViewController)
+        navigationController.navigationBar.tintColor = .systemPink
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }

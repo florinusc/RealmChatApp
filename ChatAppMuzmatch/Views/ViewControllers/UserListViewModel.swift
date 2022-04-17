@@ -12,10 +12,7 @@ class UserListViewModel: ViewModel {
     
     var dataSource: UserListDataSource! {
         didSet {
-            snapshot.appendSections([.main])
-            let users = dataManager.fetchUsers()
-            snapshot.appendItems(users, toSection: .main)
-            dataSource.apply(snapshot, animatingDifferences: false)
+            updateUsers()
         }
     }
     
@@ -33,6 +30,13 @@ class UserListViewModel: ViewModel {
         let user = User(name: name)
         snapshot.appendItems([user], toSection: .main)
         dataSource.apply(snapshot)
-        dataManager.save(user)
+        try? dataManager.save(user)
+    }
+    
+    private func updateUsers() {
+        snapshot.appendSections([.main])
+        let users = try? dataManager.fetchUsers()
+        snapshot.appendItems(users ?? [], toSection: .main)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 }

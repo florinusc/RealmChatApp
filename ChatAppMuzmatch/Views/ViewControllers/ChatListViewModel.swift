@@ -11,11 +11,7 @@ class ChatListViewModel: ViewModel {
     private let user: User
     private let dataManager: DataBaseManager
     
-    var dataSource: ChatListDataSource! {
-        didSet {
-            updateChats()
-        }
-    }
+    var dataSource: ChatListDataSource!
     
     private var snapshot = ChatListSnapshot()
     
@@ -33,14 +29,14 @@ class ChatListViewModel: ViewModel {
         let chat = Chat(messages: [], name: name)
         snapshot.appendItems([chat], toSection: .main)
         dataSource.apply(snapshot)
-        dataManager.save(chat)
+        try? dataManager.save(chat)
     }
     
     func updateChats() {
-        let chats = dataManager.fetchChats()
+        let chats = try? dataManager.fetchChats()
         snapshot.deleteAllItems()
         snapshot.appendSections([.main])
-        snapshot.appendItems(chats, toSection: .main)
+        snapshot.appendItems(chats ?? [], toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
