@@ -166,12 +166,14 @@ extension ChatViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard viewModel.titleForHeader(in: section) != nil else { return .leastNonzeroMagnitude }
         return 20
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let titleForHeader = viewModel.titleForHeader(in: section) else { return nil }
         let label = UILabel()
-        label.text = viewModel.titleForHeader(in: section)
+        label.text = titleForHeader
         label.textAlignment = .center
         label.textColor = .darkGray
         label.font = .systemFont(ofSize: 10)

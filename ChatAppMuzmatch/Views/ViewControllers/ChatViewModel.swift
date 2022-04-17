@@ -8,6 +8,12 @@
 import Foundation
 
 class ChatViewModel: ViewModel {
+    private enum MessageHandler {
+        case addToLastSection
+        case createNewSection
+        case createNewSectionWithHeader
+    }
+    
     private let chat: Chat
     private let currentUser: User
     private let dataManager: DataBaseManager
@@ -61,18 +67,16 @@ class ChatViewModel: ViewModel {
                               senderId: currentUser.id,
                               content: messageContent,
                               timeStamp: Date())
-        let moreThanAnHourPassed = checkIfAnHourPassed(lastSection: lastSection, message: message)
         
-        if lastMessage?.senderId == currentUser.id &&
-            lastSection != nil &&
-            !moreThanAnHourPassed {
+        let messageHandler = handleMessage(message: message, lastSection: lastSection)
+        switch messageHandler {
+        case .addToLastSection:
             snapshot.appendItems([message], toSection: lastSection)
             lastSection?.messages.append(message)
-        } else {
-            let section = MessageSection(id: UUID().uuidString, firstTimeStamp: message.timeStamp, hasHeader: true, messages: [message])
-            messageSections.append(section)
-            snapshot.appendSections([section])
-            snapshot.appendItems([message], toSection: section)
+        case .createNewSection:
+            addNewSection(message: message, hasHeader: false)
+        case .createNewSectionWithHeader:
+            addNewSection(message: message)
         }
         
         chat.addMessage(message: message)
@@ -108,6 +112,7 @@ class ChatViewModel: ViewModel {
     
     func titleForHeader(in section: Int) -> String? {
         let messageSection = messageSections[section]
+        guard messageSection.hasHeader else { return nil }
         guard let firstMessage = messageSection.messages.first else { return nil }
         if Calendar.current.isDateInToday(firstMessage.timeStamp) {
             return "Today, " + firstMessage.timeStamp.formatted(date: .omitted, time: .shortened)
@@ -131,20 +136,14 @@ class ChatViewModel: ViewModel {
         var sections = [MessageSection]()
         
         for message in sortedMessages {
-            let lastSection = sections.last
-            
-            if let lastSection = lastSection, let lastMessage = lastSection.messages.last {
-                
-                let moreThanAnHourPassed = checkIfAnHourPassed(lastSection: lastSection, message: message)
-                
-                if lastMessage.senderId != message.senderId || moreThanAnHourPassed {
-                    let section = createNewSection(with: message)
-                    sections.append(section)
-                } else {
-                    lastSection.messages.append(message)
-                }
-                
-            } else {
+            let messageHandler = handleMessage(message: message, lastSection: sections.last)
+            switch messageHandler {
+            case .addToLastSection:
+                lastSection?.messages.append(message)
+            case .createNewSection:
+                let section = createNewSection(with: message, hasHeader: false)
+                sections.append(section)
+            case .createNewSectionWithHeader:
                 let section = createNewSection(with: message)
                 sections.append(section)
             }
@@ -153,9 +152,31 @@ class ChatViewModel: ViewModel {
         return sections
     }
     
-    private func createNewSection(with message: Message) -> MessageSection {
-        let section = MessageSection(id: UUID().uuidString, firstTimeStamp: message.timeStamp, hasHeader: true, messages: [message])
+    private func handleMessage(message: Message, lastSection: MessageSection?) -> MessageHandler {
+        if let lastSection = lastSection, let lastMessage = lastSection.messages.last {
+            let moreThanAnHourPassed = checkIfAnHourPassed(lastSection: lastSection, message: message)
+            if moreThanAnHourPassed {
+                return .createNewSectionWithHeader
+            } else if lastMessage.senderId != message.senderId {
+                return .createNewSection
+            } else {
+                return .addToLastSection
+            }
+        } else {
+            return .createNewSectionWithHeader
+        }
+    }
+    
+    private func createNewSection(with message: Message, hasHeader: Bool = true) -> MessageSection {
+        let section = MessageSection(id: UUID().uuidString, firstTimeStamp: message.timeStamp, hasHeader: hasHeader, messages: [message])
         return section
+    }
+    
+    private func addNewSection(message: Message, hasHeader: Bool = true) {
+        let section = createNewSection(with: message, hasHeader: hasHeader)
+        messageSections.append(section)
+        snapshot.appendSections([section])
+        snapshot.appendItems([message], toSection: section)
     }
     
     private func checkIfAnHourPassed(lastSection: MessageSection?, message: Message) -> Bool {

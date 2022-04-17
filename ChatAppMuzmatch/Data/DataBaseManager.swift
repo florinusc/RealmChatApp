@@ -10,7 +10,7 @@ import RealmSwift
 
 class DataBaseManager {
     func save(_ chat: Chat) throws {
-        let realm = try! Realm()
+        let realm = try Realm()
         try realm.write {
             let dbChat = DBChat(chat: chat)
             realm.add(dbChat)
@@ -18,7 +18,7 @@ class DataBaseManager {
     }
     
     func update(_ chat: Chat, with message: Message) throws {
-        let realm = try! Realm()
+        let realm = try Realm()
         guard let dbChat = realm.objects(DBChat.self).where({ $0.id == chat.id }).first else { return }
         try realm.write {
             dbChat.messages.append(DBMessage(message: message))
@@ -30,7 +30,7 @@ class DataBaseManager {
     }
     
     func save(_ user: User) throws {
-        let realm = try! Realm()
+        let realm = try Realm()
         try realm.write {
             let dbUser = DBUser(user: user)
             realm.add(dbUser)
