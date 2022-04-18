@@ -53,13 +53,11 @@ class ChatViewModel: ViewModel {
     }
     
     private var snapshot = ChatSnapshot()
-    private var messageSections = [MessageSection]()
     
     init(chat: Chat, currentUser: User, dataManager: DataBaseManager) {
         self.chat = chat
         self.currentUser = currentUser
         self.dataManager = dataManager
-        self.messageSections = processMessages(messages: chat.messages)
     }
     
     func addMessage(_ messageContent: String, _ completion: (() -> Void)? = nil) {
@@ -111,6 +109,7 @@ class ChatViewModel: ViewModel {
     }
     
     func titleForHeader(in section: Int) -> String? {
+        let messageSections = snapshot.sectionIdentifiers
         let messageSection = messageSections[section]
         guard messageSection.hasHeader else { return nil }
         guard let firstMessage = messageSection.messages.first else { return nil }
@@ -122,6 +121,7 @@ class ChatViewModel: ViewModel {
     }
     
     private func setUpDataSource() {
+        let messageSections = processMessages(messages: chat.messages)
         snapshot.appendSections(messageSections)
         for section in messageSections {
             snapshot.appendItems(section.messages, toSection: section)
@@ -139,7 +139,7 @@ class ChatViewModel: ViewModel {
             let messageHandler = handleMessage(message: message, lastSection: sections.last)
             switch messageHandler {
             case .addToLastSection:
-                lastSection?.messages.append(message)
+                sections.last?.messages.append(message)
             case .createNewSection:
                 let section = createNewSection(with: message, hasHeader: false)
                 sections.append(section)
@@ -174,7 +174,6 @@ class ChatViewModel: ViewModel {
     
     private func addNewSection(message: Message, hasHeader: Bool = true) {
         let section = createNewSection(with: message, hasHeader: hasHeader)
-        messageSections.append(section)
         snapshot.appendSections([section])
         snapshot.appendItems([message], toSection: section)
     }

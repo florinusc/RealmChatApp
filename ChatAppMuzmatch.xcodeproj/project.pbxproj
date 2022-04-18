@@ -11,7 +11,6 @@
 		9F37AA8E280569BF00688F3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AA8D280569BF00688F3A /* SceneDelegate.swift */; };
 		9F37AA90280569BF00688F3A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AA8F280569BF00688F3A /* ChatViewController.swift */; };
 		9F37AA93280569BF00688F3A /* ChatViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F37AA91280569BF00688F3A /* ChatViewController.storyboard */; };
-		9F37AA96280569BF00688F3A /* ChatAppMuzmatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AA94280569BF00688F3A /* ChatAppMuzmatch.xcdatamodeld */; };
 		9F37AA98280569C100688F3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F37AA97280569C100688F3A /* Assets.xcassets */; };
 		9F37AA9B280569C100688F3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F37AA99280569C100688F3A /* LaunchScreen.storyboard */; };
 		9F37AAA6280569C100688F3A /* ChatAppMuzmatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AAA5280569C100688F3A /* ChatAppMuzmatchTests.swift */; };
@@ -70,7 +69,6 @@
 		9F37AA8D280569BF00688F3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9F37AA8F280569BF00688F3A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		9F37AA92280569BF00688F3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChatViewController.storyboard; sourceTree = "<group>"; };
-		9F37AA95280569BF00688F3A /* ChatAppMuzmatch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChatAppMuzmatch.xcdatamodel; sourceTree = "<group>"; };
 		9F37AA97280569C100688F3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F37AA9A280569C100688F3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F37AA9C280569C100688F3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 				9F37AA97280569C100688F3A /* Assets.xcassets */,
 				9F37AA99280569C100688F3A /* LaunchScreen.storyboard */,
 				9F37AA9C280569C100688F3A /* Info.plist */,
-				9F37AA94280569BF00688F3A /* ChatAppMuzmatch.xcdatamodeld */,
 			);
 			path = "Project Files";
 			sourceTree = "<group>";
@@ -439,7 +436,6 @@
 				9FA5C0FB280A928700502D99 /* DataBaseManager.swift in Sources */,
 				9FA5C0EF2809A6B200502D99 /* Constants.swift in Sources */,
 				9FA5C0F12809AA7300502D99 /* ViewModel.swift in Sources */,
-				9F37AA96280569BF00688F3A /* ChatAppMuzmatch.xcdatamodeld in Sources */,
 				9F9DAAE02805EC9C00C7C20B /* IncomingMessageCell.swift in Sources */,
 				9F37AA8E280569BF00688F3A /* SceneDelegate.swift in Sources */,
 				9F9DAAF12805F8A300C7C20B /* Message.swift in Sources */,
@@ -832,19 +828,6 @@
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		9F37AA94280569BF00688F3A /* ChatAppMuzmatch.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				9F37AA95280569BF00688F3A /* ChatAppMuzmatch.xcdatamodel */,
-			);
-			currentVersion = 9F37AA95280569BF00688F3A /* ChatAppMuzmatch.xcdatamodel */;
-			path = ChatAppMuzmatch.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 9F37AA80280569BE00688F3A /* Project object */;
 }
