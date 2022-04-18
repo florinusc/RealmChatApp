@@ -33,14 +33,6 @@ class ChatViewController: UIViewController, ViewModelBased, StoryboardViewContro
         return true
     }
     
-    private var lastIndexPath: IndexPath? {
-        guard let lastSectionIndex = self.viewModel.lastSectionIndex,
-              let lastMessageIndex = self.viewModel.lastMessageIndex else {
-            return nil
-        }
-        return IndexPath(row: lastMessageIndex, section: lastSectionIndex)
-    }
-    
     private var isAnimating = false
     
     override func viewDidLoad() {
@@ -103,8 +95,8 @@ class ChatViewController: UIViewController, ViewModelBased, StoryboardViewContro
         outgoingMessageCell.message = message.content
         outgoingMessageCell.isCompact = isCompact
         
-        let isLastSection = viewModel.lastSection == viewModel.section(for: message)
-        let isLastMessage = viewModel.lastMessage == message
+        let isLastSection = viewModel.isLastSection(at: indexPath)
+        let isLastMessage = viewModel.isLastMessage(at: indexPath)
         
         if isLastSection && isLastMessage && isAnimating {
             outgoingMessageCell.isHidden = true
@@ -149,11 +141,10 @@ class ChatViewController: UIViewController, ViewModelBased, StoryboardViewContro
     
     private func scrollToBottom() {
         DispatchQueue.main.async {
-            guard let lastIndexPath = self.lastIndexPath else { return }
+            guard let lastIndexPath = self.viewModel.lastIndexPath else { return }
             self.tableView.scrollToRow(at: lastIndexPath, at: .top, animated: false)
         }
     }
-    
 }
 
 extension ChatViewController: UITableViewDelegate {
@@ -192,7 +183,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                 guard
                     let self = self,
                     let customInputBar = inputBar as? CustomInputBar,
-                    let lastIndexPath = self.lastIndexPath,
+                    let lastIndexPath = self.viewModel.lastIndexPath,
                     let lastCell = self.tableView.cellForRow(at: lastIndexPath) as? OutgoingMessageCell
                 else {
                     return

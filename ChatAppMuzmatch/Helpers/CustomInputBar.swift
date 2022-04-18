@@ -32,9 +32,9 @@ final class CustomInputBar: InputBarAccessoryView {
         inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         setRightStackViewWidthConstant(to: 38, animated: false)
         setStackViewItems([sendButton, InputBarButtonItem.fixedSpace(2)], forStack: .right, animated: false)
-        sendButton.imageView?.backgroundColor = tintColor
+        sendButton.imageView?.backgroundColor = .systemPink
         sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
-        sendButton.image = UIImage(named: "arrow_up")
+        sendButton.image = #imageLiteral(resourceName: "arrow_up")
         sendButton.title = nil
         sendButton.imageView?.layer.cornerRadius = 16
         sendButton.backgroundColor = .clear

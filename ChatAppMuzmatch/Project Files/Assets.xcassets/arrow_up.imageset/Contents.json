@@ -5,12 +5,11 @@
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-up-50.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-up-100.png",
+      "filename" : "icons8-up_arrow.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
