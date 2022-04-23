@@ -19,6 +19,8 @@ class ChatListViewController: UIViewController, ViewModelBased, StoryboardViewCo
     
     var viewModel: ChatListViewModel!
     
+    weak var coordinator: MainCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
@@ -73,7 +75,6 @@ extension ChatListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let chatViewModel = viewModel.chatViewModel(at: indexPath.row)
-        let chatViewController = ChatViewController.getInstance(with: chatViewModel)
-        navigationController?.pushViewController(chatViewController, animated: true)
+        coordinator?.goToChat(with: chatViewModel)
     }
 }

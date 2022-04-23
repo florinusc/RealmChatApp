@@ -19,6 +19,8 @@ class UserListViewController: UIViewController, ViewModelBased, StoryboardViewCo
     
     var viewModel: UserListViewModel!
     
+    weak var coordinator: MainCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
@@ -67,7 +69,6 @@ extension UserListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let chatListViewModel = viewModel.chatListViewModel(withUserFrom: indexPath.row)
-        let chatListViewController = ChatListViewController.getInstance(with: chatListViewModel)
-        navigationController?.pushViewController(chatListViewController, animated: true)
+        coordinator?.goToChatList(with: chatListViewModel)
     }
 }

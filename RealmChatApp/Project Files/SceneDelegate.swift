@@ -9,6 +9,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+    var coordinator: Coordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -16,12 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
-        let dataBaseManager = DataBaseManager()
-        let userListViewController = UserListViewController.getInstance(with: UserListViewModel(dataManager: dataBaseManager))
-        let navigationController = UINavigationController(rootViewController: userListViewController)
+        let navigationController = UINavigationController()
         navigationController.navigationBar.tintColor = .systemPink
+        coordinator = MainCoordinator(navigationController: navigationController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        coordinator?.start()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -45,6 +45,8 @@
 		9FB5832E28141BA800D4F4D4 /* InputBarAccessoryView in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB5832D28141BA800D4F4D4 /* InputBarAccessoryView */; };
 		9FB5833128141BDB00D4F4D4 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB5833028141BDB00D4F4D4 /* Realm */; };
 		9FB5833328141BDB00D4F4D4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB5833228141BDB00D4F4D4 /* RealmSwift */; };
+		9FB5833528141D9C00D4F4D4 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5833428141D9C00D4F4D4 /* Coordinator.swift */; };
+		9FB583382814247200D4F4D4 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB583372814247200D4F4D4 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		9FA5C10C280AFFFC00502D99 /* DBMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBMessage.swift; sourceTree = "<group>"; };
 		9FA5C10E280B004200502D99 /* DBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUser.swift; sourceTree = "<group>"; };
 		9FA5C110280D590000502D99 /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
+		9FB5833428141D9C00D4F4D4 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		9FB583372814247200D4F4D4 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +161,7 @@
 		9F37AA8A280569BF00688F3A /* RealmChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				9FB583362814246200D4F4D4 /* Navigation */,
 				9FA5C0F9280A927300502D99 /* Data */,
 				9F9DAAEF2805F89A00C7C20B /* Models */,
 				9F9DAAEE2805F67F00C7C20B /* Views */,
@@ -281,6 +286,15 @@
 				9FA5C10E280B004200502D99 /* DBUser.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		9FB583362814246200D4F4D4 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				9FB5833428141D9C00D4F4D4 /* Coordinator.swift */,
+				9FB583372814247200D4F4D4 /* MainCoordinator.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FA5C111280D590000502D99 /* ChatManager.swift in Sources */,
+				9FB5833528141D9C00D4F4D4 /* Coordinator.swift in Sources */,
 				9F37AA90280569BF00688F3A /* ChatViewController.swift in Sources */,
 				9FA5C105280AC4F300502D99 /* UserListViewController.swift in Sources */,
 				9FA5C0E92808728E00502D99 /* UIView+Extension.swift in Sources */,
@@ -453,6 +468,7 @@
 				9F9DAAF52805F8E400C7C20B /* ChatViewModel.swift in Sources */,
 				9FA5C10D280AFFFC00502D99 /* DBMessage.swift in Sources */,
 				9F9DAAF32805F8CD00C7C20B /* User.swift in Sources */,
+				9FB583382814247200D4F4D4 /* MainCoordinator.swift in Sources */,
 				9FA5C107280AC52500502D99 /* UserListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
