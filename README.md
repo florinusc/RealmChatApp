@@ -1,6 +1,6 @@
 
    
-# Chat App Muzmatch
+# Realm Chat App 
 > App for chatting locally
 
 ## Features
@@ -18,7 +18,7 @@
 
 ## Run
 
-Open `ChatAppMuzmatch.xcodeproj` and run.
+Open `RealmChatApp.xcodeproj` and run.
 
 ## Meta
 
