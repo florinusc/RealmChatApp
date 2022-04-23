@@ -1,0 +1,857 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9F37AA8C280569BF00688F3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AA8B280569BF00688F3A /* AppDelegate.swift */; };
+		9F37AA8E280569BF00688F3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AA8D280569BF00688F3A /* SceneDelegate.swift */; };
+		9F37AA90280569BF00688F3A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AA8F280569BF00688F3A /* ChatViewController.swift */; };
+		9F37AA93280569BF00688F3A /* ChatViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F37AA91280569BF00688F3A /* ChatViewController.storyboard */; };
+		9F37AA98280569C100688F3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F37AA97280569C100688F3A /* Assets.xcassets */; };
+		9F37AA9B280569C100688F3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F37AA99280569C100688F3A /* LaunchScreen.storyboard */; };
+		9F37AAA6280569C100688F3A /* RealmChatAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AAA5280569C100688F3A /* RealmChatAppTests.swift */; };
+		9F37AAB0280569C100688F3A /* RealmChatAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AAAF280569C100688F3A /* RealmChatAppUITests.swift */; };
+		9F37AAB2280569C100688F3A /* RealmChatAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AAB1280569C100688F3A /* RealmChatAppUITestsLaunchTests.swift */; };
+		9F37AABF2805734B00688F3A /* OutgoingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F37AABE2805734B00688F3A /* OutgoingMessageCell.xib */; };
+		9F37AAC12805735800688F3A /* OutgoingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F37AAC02805735800688F3A /* OutgoingMessageCell.swift */; };
+		9F9DAAE02805EC9C00C7C20B /* IncomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAADE2805EC9C00C7C20B /* IncomingMessageCell.swift */; };
+		9F9DAAE12805EC9C00C7C20B /* IncomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F9DAADF2805EC9C00C7C20B /* IncomingMessageCell.xib */; };
+		9F9DAAE32805F25500C7C20B /* CustomInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAAE22805F25500C7C20B /* CustomInputBar.swift */; };
+		9F9DAAE52805F29200C7C20B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAAE42805F29200C7C20B /* UITableView+Extension.swift */; };
+		9F9DAAED2805F61E00C7C20B /* StoryboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAAEC2805F61E00C7C20B /* StoryboardViewController.swift */; };
+		9F9DAAF12805F8A300C7C20B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAAF02805F8A300C7C20B /* Message.swift */; };
+		9F9DAAF32805F8CD00C7C20B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAAF22805F8CD00C7C20B /* User.swift */; };
+		9F9DAAF52805F8E400C7C20B /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAAF42805F8E400C7C20B /* ChatViewModel.swift */; };
+		9FA5C0E92808728E00502D99 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0E82808728E00502D99 /* UIView+Extension.swift */; };
+		9FA5C0EB28094B5D00502D99 /* MessageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0EA28094B5D00502D99 /* MessageSection.swift */; };
+		9FA5C0EF2809A6B200502D99 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0EE2809A6B200502D99 /* Constants.swift */; };
+		9FA5C0F12809AA7300502D99 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0F02809AA7300502D99 /* ViewModel.swift */; };
+		9FA5C0FB280A928700502D99 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0FA280A928700502D99 /* DataBaseManager.swift */; };
+		9FA5C0FD280A9A6600502D99 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0FC280A9A6600502D99 /* Chat.swift */; };
+		9FA5C0FF280AAA3600502D99 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C0FE280AAA3600502D99 /* ChatListViewController.swift */; };
+		9FA5C101280AAA8500502D99 /* ChatListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FA5C100280AAA8500502D99 /* ChatListViewController.storyboard */; };
+		9FA5C103280AAAA900502D99 /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C102280AAAA900502D99 /* ChatListViewModel.swift */; };
+		9FA5C105280AC4F300502D99 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C104280AC4F300502D99 /* UserListViewController.swift */; };
+		9FA5C107280AC52500502D99 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C106280AC52500502D99 /* UserListViewModel.swift */; };
+		9FA5C109280AC67C00502D99 /* UserListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FA5C108280AC67C00502D99 /* UserListViewController.storyboard */; };
+		9FA5C10B280AFFE400502D99 /* DBChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C10A280AFFE400502D99 /* DBChat.swift */; };
+		9FA5C10D280AFFFC00502D99 /* DBMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C10C280AFFFC00502D99 /* DBMessage.swift */; };
+		9FA5C10F280B004200502D99 /* DBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C10E280B004200502D99 /* DBUser.swift */; };
+		9FA5C111280D590000502D99 /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5C110280D590000502D99 /* ChatManager.swift */; };
+		9FB5832E28141BA800D4F4D4 /* InputBarAccessoryView in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB5832D28141BA800D4F4D4 /* InputBarAccessoryView */; };
+		9FB5833128141BDB00D4F4D4 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB5833028141BDB00D4F4D4 /* Realm */; };
+		9FB5833328141BDB00D4F4D4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB5833228141BDB00D4F4D4 /* RealmSwift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9F37AAA2280569C100688F3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F37AA80280569BE00688F3A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F37AA87280569BF00688F3A;
+			remoteInfo = ChatAppMuzmatch;
+		};
+		9F37AAAC280569C100688F3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F37AA80280569BE00688F3A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F37AA87280569BF00688F3A;
+			remoteInfo = ChatAppMuzmatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9F37AA88280569BF00688F3A /* RealmChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealmChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F37AA8B280569BF00688F3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9F37AA8D280569BF00688F3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		9F37AA8F280569BF00688F3A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		9F37AA92280569BF00688F3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChatViewController.storyboard; sourceTree = "<group>"; };
+		9F37AA97280569C100688F3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9F37AA9A280569C100688F3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9F37AA9C280569C100688F3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F37AAA1280569C100688F3A /* RealmChatAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RealmChatAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F37AAA5280569C100688F3A /* RealmChatAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChatAppTests.swift; sourceTree = "<group>"; };
+		9F37AAAB280569C100688F3A /* RealmChatAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RealmChatAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F37AAAF280569C100688F3A /* RealmChatAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChatAppUITests.swift; sourceTree = "<group>"; };
+		9F37AAB1280569C100688F3A /* RealmChatAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChatAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9F37AABE2805734B00688F3A /* OutgoingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutgoingMessageCell.xib; sourceTree = "<group>"; };
+		9F37AAC02805735800688F3A /* OutgoingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessageCell.swift; sourceTree = "<group>"; };
+		9F9DAADE2805EC9C00C7C20B /* IncomingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessageCell.swift; sourceTree = "<group>"; };
+		9F9DAADF2805EC9C00C7C20B /* IncomingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomingMessageCell.xib; sourceTree = "<group>"; };
+		9F9DAAE22805F25500C7C20B /* CustomInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputBar.swift; sourceTree = "<group>"; };
+		9F9DAAE42805F29200C7C20B /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		9F9DAAEC2805F61E00C7C20B /* StoryboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardViewController.swift; sourceTree = "<group>"; };
+		9F9DAAF02805F8A300C7C20B /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		9F9DAAF22805F8CD00C7C20B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9F9DAAF42805F8E400C7C20B /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		9FA5C0E82808728E00502D99 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		9FA5C0EA28094B5D00502D99 /* MessageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSection.swift; sourceTree = "<group>"; };
+		9FA5C0EE2809A6B200502D99 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9FA5C0F02809AA7300502D99 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		9FA5C0FA280A928700502D99 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		9FA5C0FC280A9A6600502D99 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		9FA5C0FE280AAA3600502D99 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		9FA5C100280AAA8500502D99 /* ChatListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatListViewController.storyboard; sourceTree = "<group>"; };
+		9FA5C102280AAAA900502D99 /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
+		9FA5C104280AC4F300502D99 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		9FA5C106280AC52500502D99 /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
+		9FA5C108280AC67C00502D99 /* UserListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserListViewController.storyboard; sourceTree = "<group>"; };
+		9FA5C10A280AFFE400502D99 /* DBChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBChat.swift; sourceTree = "<group>"; };
+		9FA5C10C280AFFFC00502D99 /* DBMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBMessage.swift; sourceTree = "<group>"; };
+		9FA5C10E280B004200502D99 /* DBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUser.swift; sourceTree = "<group>"; };
+		9FA5C110280D590000502D99 /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9F37AA85280569BF00688F3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FB5833328141BDB00D4F4D4 /* RealmSwift in Frameworks */,
+				9FB5833128141BDB00D4F4D4 /* Realm in Frameworks */,
+				9FB5832E28141BA800D4F4D4 /* InputBarAccessoryView in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F37AA9E280569C100688F3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F37AAA8280569C100688F3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9F37AA7F280569BE00688F3A = {
+			isa = PBXGroup;
+			children = (
+				9F37AA8A280569BF00688F3A /* RealmChatApp */,
+				9F37AAA4280569C100688F3A /* RealmChatAppTests */,
+				9F37AAAE280569C100688F3A /* RealmChatAppUITests */,
+				9F37AA89280569BF00688F3A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9F37AA89280569BF00688F3A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9F37AA88280569BF00688F3A /* RealmChatApp.app */,
+				9F37AAA1280569C100688F3A /* RealmChatAppTests.xctest */,
+				9F37AAAB280569C100688F3A /* RealmChatAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9F37AA8A280569BF00688F3A /* RealmChatApp */ = {
+			isa = PBXGroup;
+			children = (
+				9FA5C0F9280A927300502D99 /* Data */,
+				9F9DAAEF2805F89A00C7C20B /* Models */,
+				9F9DAAEE2805F67F00C7C20B /* Views */,
+				9F9DAAE92805F51800C7C20B /* Helpers */,
+				9F9DAAE82805F50A00C7C20B /* Project Files */,
+			);
+			path = RealmChatApp;
+			sourceTree = "<group>";
+		};
+		9F37AAA4280569C100688F3A /* RealmChatAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				9F37AAA5280569C100688F3A /* RealmChatAppTests.swift */,
+			);
+			path = RealmChatAppTests;
+			sourceTree = "<group>";
+		};
+		9F37AAAE280569C100688F3A /* RealmChatAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9F37AAAF280569C100688F3A /* RealmChatAppUITests.swift */,
+				9F37AAB1280569C100688F3A /* RealmChatAppUITestsLaunchTests.swift */,
+			);
+			path = RealmChatAppUITests;
+			sourceTree = "<group>";
+		};
+		9F9DAAE62805F4E400C7C20B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9F37AABE2805734B00688F3A /* OutgoingMessageCell.xib */,
+				9F37AAC02805735800688F3A /* OutgoingMessageCell.swift */,
+				9F9DAADF2805EC9C00C7C20B /* IncomingMessageCell.xib */,
+				9F9DAADE2805EC9C00C7C20B /* IncomingMessageCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9F9DAAE72805F4EA00C7C20B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9F37AA8F280569BF00688F3A /* ChatViewController.swift */,
+				9F37AA91280569BF00688F3A /* ChatViewController.storyboard */,
+				9F9DAAF42805F8E400C7C20B /* ChatViewModel.swift */,
+				9FA5C0FE280AAA3600502D99 /* ChatListViewController.swift */,
+				9FA5C100280AAA8500502D99 /* ChatListViewController.storyboard */,
+				9FA5C102280AAAA900502D99 /* ChatListViewModel.swift */,
+				9FA5C104280AC4F300502D99 /* UserListViewController.swift */,
+				9FA5C108280AC67C00502D99 /* UserListViewController.storyboard */,
+				9FA5C106280AC52500502D99 /* UserListViewModel.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9F9DAAE82805F50A00C7C20B /* Project Files */ = {
+			isa = PBXGroup;
+			children = (
+				9F37AA8B280569BF00688F3A /* AppDelegate.swift */,
+				9F37AA8D280569BF00688F3A /* SceneDelegate.swift */,
+				9F37AA97280569C100688F3A /* Assets.xcassets */,
+				9F37AA99280569C100688F3A /* LaunchScreen.storyboard */,
+				9F37AA9C280569C100688F3A /* Info.plist */,
+			);
+			path = "Project Files";
+			sourceTree = "<group>";
+		};
+		9F9DAAE92805F51800C7C20B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAAEB2805F60E00C7C20B /* Protocols */,
+				9F9DAAEA2805F52300C7C20B /* Extensions */,
+				9F9DAAE22805F25500C7C20B /* CustomInputBar.swift */,
+				9FA5C0EE2809A6B200502D99 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9F9DAAEA2805F52300C7C20B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAAE42805F29200C7C20B /* UITableView+Extension.swift */,
+				9FA5C0E82808728E00502D99 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9F9DAAEB2805F60E00C7C20B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAAEC2805F61E00C7C20B /* StoryboardViewController.swift */,
+				9FA5C0F02809AA7300502D99 /* ViewModel.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		9F9DAAEE2805F67F00C7C20B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAAE72805F4EA00C7C20B /* ViewControllers */,
+				9F9DAAE62805F4E400C7C20B /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9F9DAAEF2805F89A00C7C20B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAAF02805F8A300C7C20B /* Message.swift */,
+				9F9DAAF22805F8CD00C7C20B /* User.swift */,
+				9FA5C0EA28094B5D00502D99 /* MessageSection.swift */,
+				9FA5C0FC280A9A6600502D99 /* Chat.swift */,
+				9FA5C110280D590000502D99 /* ChatManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9FA5C0F9280A927300502D99 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9FA5C0FA280A928700502D99 /* DataBaseManager.swift */,
+				9FA5C10A280AFFE400502D99 /* DBChat.swift */,
+				9FA5C10C280AFFFC00502D99 /* DBMessage.swift */,
+				9FA5C10E280B004200502D99 /* DBUser.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9F37AA87280569BF00688F3A /* RealmChatApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F37AAB5280569C100688F3A /* Build configuration list for PBXNativeTarget "RealmChatApp" */;
+			buildPhases = (
+				9F37AA84280569BF00688F3A /* Sources */,
+				9F37AA85280569BF00688F3A /* Frameworks */,
+				9F37AA86280569BF00688F3A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RealmChatApp;
+			packageProductDependencies = (
+				9FB5832D28141BA800D4F4D4 /* InputBarAccessoryView */,
+				9FB5833028141BDB00D4F4D4 /* Realm */,
+				9FB5833228141BDB00D4F4D4 /* RealmSwift */,
+			);
+			productName = ChatAppMuzmatch;
+			productReference = 9F37AA88280569BF00688F3A /* RealmChatApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9F37AAA0280569C100688F3A /* RealmChatAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F37AAB8280569C100688F3A /* Build configuration list for PBXNativeTarget "RealmChatAppTests" */;
+			buildPhases = (
+				9F37AA9D280569C100688F3A /* Sources */,
+				9F37AA9E280569C100688F3A /* Frameworks */,
+				9F37AA9F280569C100688F3A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9F37AAA3280569C100688F3A /* PBXTargetDependency */,
+			);
+			name = RealmChatAppTests;
+			productName = ChatAppMuzmatchTests;
+			productReference = 9F37AAA1280569C100688F3A /* RealmChatAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9F37AAAA280569C100688F3A /* RealmChatAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F37AABB280569C100688F3A /* Build configuration list for PBXNativeTarget "RealmChatAppUITests" */;
+			buildPhases = (
+				9F37AAA7280569C100688F3A /* Sources */,
+				9F37AAA8280569C100688F3A /* Frameworks */,
+				9F37AAA9280569C100688F3A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9F37AAAD280569C100688F3A /* PBXTargetDependency */,
+			);
+			name = RealmChatAppUITests;
+			productName = ChatAppMuzmatchUITests;
+			productReference = 9F37AAAB280569C100688F3A /* RealmChatAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9F37AA80280569BE00688F3A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					9F37AA87280569BF00688F3A = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					9F37AAA0280569C100688F3A = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 9F37AA87280569BF00688F3A;
+					};
+					9F37AAAA280569C100688F3A = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 9F37AA87280569BF00688F3A;
+					};
+				};
+			};
+			buildConfigurationList = 9F37AA83280569BE00688F3A /* Build configuration list for PBXProject "RealmChatApp" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9F37AA7F280569BE00688F3A;
+			packageReferences = (
+				9F37AAC22805B0FD00688F3A /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
+				9FA5C0F4280A8DCF00502D99 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				9FB5832C28141BA800D4F4D4 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
+				9FB5832F28141BDB00D4F4D4 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
+			productRefGroup = 9F37AA89280569BF00688F3A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9F37AA87280569BF00688F3A /* RealmChatApp */,
+				9F37AAA0280569C100688F3A /* RealmChatAppTests */,
+				9F37AAAA280569C100688F3A /* RealmChatAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9F37AA86280569BF00688F3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F9DAAE12805EC9C00C7C20B /* IncomingMessageCell.xib in Resources */,
+				9F37AA9B280569C100688F3A /* LaunchScreen.storyboard in Resources */,
+				9F37AABF2805734B00688F3A /* OutgoingMessageCell.xib in Resources */,
+				9FA5C101280AAA8500502D99 /* ChatListViewController.storyboard in Resources */,
+				9FA5C109280AC67C00502D99 /* UserListViewController.storyboard in Resources */,
+				9F37AA98280569C100688F3A /* Assets.xcassets in Resources */,
+				9F37AA93280569BF00688F3A /* ChatViewController.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F37AA9F280569C100688F3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F37AAA9280569C100688F3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9F37AA84280569BF00688F3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA5C111280D590000502D99 /* ChatManager.swift in Sources */,
+				9F37AA90280569BF00688F3A /* ChatViewController.swift in Sources */,
+				9FA5C105280AC4F300502D99 /* UserListViewController.swift in Sources */,
+				9FA5C0E92808728E00502D99 /* UIView+Extension.swift in Sources */,
+				9FA5C10B280AFFE400502D99 /* DBChat.swift in Sources */,
+				9FA5C10F280B004200502D99 /* DBUser.swift in Sources */,
+				9FA5C0FD280A9A6600502D99 /* Chat.swift in Sources */,
+				9F37AAC12805735800688F3A /* OutgoingMessageCell.swift in Sources */,
+				9F9DAAE32805F25500C7C20B /* CustomInputBar.swift in Sources */,
+				9F37AA8C280569BF00688F3A /* AppDelegate.swift in Sources */,
+				9FA5C0FB280A928700502D99 /* DataBaseManager.swift in Sources */,
+				9FA5C0EF2809A6B200502D99 /* Constants.swift in Sources */,
+				9FA5C0F12809AA7300502D99 /* ViewModel.swift in Sources */,
+				9F9DAAE02805EC9C00C7C20B /* IncomingMessageCell.swift in Sources */,
+				9F37AA8E280569BF00688F3A /* SceneDelegate.swift in Sources */,
+				9F9DAAF12805F8A300C7C20B /* Message.swift in Sources */,
+				9F9DAAED2805F61E00C7C20B /* StoryboardViewController.swift in Sources */,
+				9FA5C0FF280AAA3600502D99 /* ChatListViewController.swift in Sources */,
+				9F9DAAE52805F29200C7C20B /* UITableView+Extension.swift in Sources */,
+				9FA5C0EB28094B5D00502D99 /* MessageSection.swift in Sources */,
+				9FA5C103280AAAA900502D99 /* ChatListViewModel.swift in Sources */,
+				9F9DAAF52805F8E400C7C20B /* ChatViewModel.swift in Sources */,
+				9FA5C10D280AFFFC00502D99 /* DBMessage.swift in Sources */,
+				9F9DAAF32805F8CD00C7C20B /* User.swift in Sources */,
+				9FA5C107280AC52500502D99 /* UserListViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F37AA9D280569C100688F3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F37AAA6280569C100688F3A /* RealmChatAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F37AAA7280569C100688F3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F37AAB0280569C100688F3A /* RealmChatAppUITests.swift in Sources */,
+				9F37AAB2280569C100688F3A /* RealmChatAppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9F37AAA3280569C100688F3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9F37AA87280569BF00688F3A /* RealmChatApp */;
+			targetProxy = 9F37AAA2280569C100688F3A /* PBXContainerItemProxy */;
+		};
+		9F37AAAD280569C100688F3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9F37AA87280569BF00688F3A /* RealmChatApp */;
+			targetProxy = 9F37AAAC280569C100688F3A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9F37AA91280569BF00688F3A /* ChatViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9F37AA92280569BF00688F3A /* Base */,
+			);
+			name = ChatViewController.storyboard;
+			sourceTree = "<group>";
+		};
+		9F37AA99280569C100688F3A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9F37AA9A280569C100688F3A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9F37AAB3280569C100688F3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9F37AAB4280569C100688F3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9F37AAB6280569C100688F3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8CEQW7LX82;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "RealmChatApp/Project Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = RealmChatApp;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = approcket.RealmChatApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9F37AAB7280569C100688F3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8CEQW7LX82;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "RealmChatApp/Project Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = RealmChatApp;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = approcket.RealmChatApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		9F37AAB9280569C100688F3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8CEQW7LX82;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = approcket.RealmChatApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RealmChatApp.app/RealmChatApp";
+			};
+			name = Debug;
+		};
+		9F37AABA280569C100688F3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8CEQW7LX82;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = approcket.RealmChatApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RealmChatApp.app/RealmChatApp";
+			};
+			name = Release;
+		};
+		9F37AABC280569C100688F3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8CEQW7LX82;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = approcket.RealmChatApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RealmChatApp;
+			};
+			name = Debug;
+		};
+		9F37AABD280569C100688F3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8CEQW7LX82;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = approcket.RealmChatApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RealmChatApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9F37AA83280569BE00688F3A /* Build configuration list for PBXProject "RealmChatApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F37AAB3280569C100688F3A /* Debug */,
+				9F37AAB4280569C100688F3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F37AAB5280569C100688F3A /* Build configuration list for PBXNativeTarget "RealmChatApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F37AAB6280569C100688F3A /* Debug */,
+				9F37AAB7280569C100688F3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F37AAB8280569C100688F3A /* Build configuration list for PBXNativeTarget "RealmChatAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F37AAB9280569C100688F3A /* Debug */,
+				9F37AABA280569C100688F3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F37AABB280569C100688F3A /* Build configuration list for PBXNativeTarget "RealmChatAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F37AABC280569C100688F3A /* Debug */,
+				9F37AABD280569C100688F3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9F37AAC22805B0FD00688F3A /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nathantannar4/InputBarAccessoryView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		9FA5C0F4280A8DCF00502D99 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		9FB5832C28141BA800D4F4D4 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nathantannar4/InputBarAccessoryView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		9FB5832F28141BDB00D4F4D4 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9FB5832D28141BA800D4F4D4 /* InputBarAccessoryView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F37AAC22805B0FD00688F3A /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */;
+			productName = InputBarAccessoryView;
+		};
+		9FB5833028141BDB00D4F4D4 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9FA5C0F4280A8DCF00502D99 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		9FB5833228141BDB00D4F4D4 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9FA5C0F4280A8DCF00502D99 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 9F37AA80280569BE00688F3A /* Project object */;
+}
